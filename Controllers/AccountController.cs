@@ -16,8 +16,8 @@ using Redoak_Backoffice.Services;
 
 namespace Redoak_Backoffice.Controllers
 {
-    [Authorize]
-    [Route("[controller]/[action]")]
+    //[Authorize]
+    //[Route("[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -44,6 +44,11 @@ namespace Redoak_Backoffice.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
+            if (this._signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction(nameof(HomeController.Index),"Home");
+            }
+
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 

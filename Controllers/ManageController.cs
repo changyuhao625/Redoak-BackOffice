@@ -491,6 +491,16 @@ namespace Redoak_Backoffice.Controllers
             return View(nameof(ShowRecoveryCodes), model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditRole()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var model = new EditRoleViewModel
+            {
+            };
+            return View(model);
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
