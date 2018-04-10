@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "1baf3cd1d1d579fcf2500daeebe5d0bd532dbdf4"
+    "signature": "96c03903c2e1d617b3c2f208ea712d45a86efdde"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
         "dependencies": {
           "Autofac": "4.6.2",
           "Autofac.Configuration": "4.0.1",
+          "Autofac.Extensions.DependencyInjection": "4.2.2",
           "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
@@ -72,6 +73,19 @@
         },
         "compile": {
           "lib/netstandard1.3/Autofac.Configuration.dll": {}
+        }
+      },
+      "Autofac.Extensions.DependencyInjection/4.2.2": {
+        "dependencies": {
+          "Autofac": "4.6.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4102,6 +4116,9 @@
         }
       },
       "Redoak.Dal/1.0.0": {
+        "dependencies": {
+          "Redoak.Model": "1.0.0"
+        },
         "runtime": {
           "Redoak.Dal.dll": {}
         },
@@ -4329,6 +4346,13 @@
       "sha512": "sha512-MGxi3e626bjqKbEglNMPXSkMpEC7F6fKGlt/JfiYNKkf9RQ4ZSLg71LWrPGbtHfph5LJcElIoUMVuVh7BLsonQ==",
       "path": "autofac.configuration/4.0.1",
       "hashPath": "autofac.configuration.4.0.1.nupkg.sha512"
+    },
+    "Autofac.Extensions.DependencyInjection/4.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nkspkD4qRKCvM1WG6bFLAuEwvbajEhEe7U3Q6XISCBEG6ZamOy52JACXnx3VumZksjPTylavkUZRzBBY7T2R+w==",
+      "path": "autofac.extensions.dependencyinjection/4.2.2",
+      "hashPath": "autofac.extensions.dependencyinjection.4.2.2.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

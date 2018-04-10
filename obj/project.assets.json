@@ -38,6 +38,20 @@
           "lib/netstandard1.3/Autofac.Configuration.dll": {}
         }
       },
+      "Autofac.Extensions.DependencyInjection/4.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "4.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5078,6 +5092,9 @@
       "Redoak.Dal/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Redoak.Model": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Redoak.Dal.dll": {}
         },
@@ -5139,6 +5156,17 @@
         "lib/net45/Autofac.Configuration.xml",
         "lib/netstandard1.3/Autofac.Configuration.dll",
         "lib/netstandard1.3/Autofac.Configuration.xml"
+      ]
+    },
+    "Autofac.Extensions.DependencyInjection/4.2.2": {
+      "sha512": "nkspkD4qRKCvM1WG6bFLAuEwvbajEhEe7U3Q6XISCBEG6ZamOy52JACXnx3VumZksjPTylavkUZRzBBY7T2R+w==",
+      "type": "package",
+      "path": "autofac.extensions.dependencyinjection/4.2.2",
+      "files": [
+        "autofac.extensions.dependencyinjection.4.2.2.nupkg.sha512",
+        "autofac.extensions.dependencyinjection.nuspec",
+        "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll",
+        "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.xml"
       ]
     },
     "Libuv/1.10.0": {
@@ -13249,6 +13277,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Autofac >= 4.6.2",
       "Autofac.Configuration >= 4.0.1",
+      "Autofac.Extensions.DependencyInjection >= 4.2.2",
       "Microsoft.AspNetCore.All >= 2.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13319,6 +13348,10 @@
           "Autofac.Configuration": {
             "target": "Package",
             "version": "[4.0.1, )"
+          },
+          "Autofac.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[4.2.2, )"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",

@@ -1,10 +1,13 @@
 ﻿using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Redoak.Backoffice.App_Start.Autofac;
 using Redoak.Backoffice.Data;
 using Redoak.Backoffice.Models;
 using Redoak.Backoffice.Services;
@@ -22,10 +25,9 @@ namespace Redoak.Backoffice
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-
-            services.AddDbContext<RedoakContext>(options => 
+            services.AddDbContext<RedoakContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -72,6 +74,23 @@ namespace Redoak.Backoffice
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+
+            var builder = new ContainerBuilder();
+
+            builder.RegisterModule<BaseModule>();
+            builder.RegisterModule<ServiceModule>();
+
+            builder.Populate(services);
+
+            var container = builder.Build();
+            return container.Resolve<IServiceProvider>();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new BaseModule());
+            builder.RegisterModule(new ServiceModule());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,8 +114,8 @@ namespace Redoak.Backoffice
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Account}/{action=Login}/{id?}");
+                    "default",
+                    "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Redoak.Backoffice.Models;
 using Redoak.Backoffice.Models.ManageViewModels;
 using Redoak.Backoffice.Services;
+using Redoak.Domain.Interface;
 
 namespace Redoak.Backoffice.Controllers
 {
@@ -21,7 +22,7 @@ namespace Redoak.Backoffice.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
-
+        private readonly IUserService userService;
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
 
@@ -30,13 +31,15 @@ namespace Redoak.Backoffice.Controllers
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+          IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            this.userService = userService;
         }
 
         [TempData]
@@ -197,15 +200,16 @@ namespace Redoak.Backoffice.Controllers
 
             return RedirectToAction(nameof(SetPassword));
         }
-      
 
-   
+
+
 
 
         [HttpGet]
         public async Task<IActionResult> EditRole()
         {
-            var user = await _userManager.GetUserAsync(User);
+            //var user = await _userManager.GetUserAsync(User);
+            var users = await this.userService.GetUser();
             var model = new EditRoleViewModel
             {
             };
