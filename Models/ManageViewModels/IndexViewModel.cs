@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Redoak_Backoffice.Models.ManageViewModels
+namespace Redoak.Backoffice.Models.ManageViewModels
 {
     public class IndexViewModel
     {

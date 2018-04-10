@@ -1,6 +1,4 @@
-using System;
-
-namespace Redoak_Backoffice.Models
+namespace Redoak.Backoffice.Models
 {
     public class ErrorViewModel
     {

@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Redoak_Backoffice.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Redoak.Backoffice.Controllers;
 
-namespace Microsoft.AspNetCore.Mvc
+namespace Redoak.Backoffice.Extensions
 {
     public static class UrlHelperExtensions
     {

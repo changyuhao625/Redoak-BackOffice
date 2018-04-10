@@ -1,5 +1,4 @@
-﻿using System;
-namespace Redoak_Backoffice.Models.ManageViewModels
+﻿namespace Redoak.Backoffice.Models.ManageViewModels
 {
     public class EditRoleViewModel
     {

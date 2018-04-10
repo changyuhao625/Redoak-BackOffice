@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Redoak_Backoffice.Services;
+using Redoak.Backoffice.Services;
 
-namespace Redoak_Backoffice.Services
+namespace Redoak.Backoffice.Extensions
 {
     public static class EmailSenderExtensions
     {

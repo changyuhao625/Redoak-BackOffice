@@ -1,4 +1,5 @@
-﻿@using Redoak_Backoffice.Views.Manage
+﻿@using Redoak.Backoffice.Models
+@using Redoak_Backoffice.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Redoak_Backoffice.Data;
-using Redoak_Backoffice.Models;
-using Redoak_Backoffice.Services;
+using Redoak.Backoffice.Data;
+using Redoak.Backoffice.Models;
+using Redoak.Backoffice.Services;
+using Redoak.Model.Models;
 
-namespace Redoak_Backoffice
+namespace Redoak.Backoffice
 {
     public class Startup
     {
@@ -26,6 +24,10 @@ namespace Redoak_Backoffice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<RedoakContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
