@@ -1,13 +1,19 @@
 ﻿@using Redoak.Backoffice.Models
 @using Redoak_Backoffice.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
-@{
-    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
-}
 
 <ul class="nav nav-pills nav-stacked">
-    <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Profile</a></li>
-    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">Password</a></li>
-    <li class="@ManageNavPages.EditRoleClass(ViewContext)"><a asp-action="EditRole">Edit Role</a></li>
+    <li class="@ManageNavPages.IndexNavClass(ViewContext)">
+        <a asp-action="Index">Profile</a>
+    </li>
+    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)">
+        <a asp-action="ChangePassword">Password</a>
+    </li>
+    <li class="@ManageNavPages.EditRoleClass(ViewContext)">
+        <a asp-action="EditRole">Edit Role</a>
+    </li>
+    <li class="@ManageNavPages.RegisterAccountClass(ViewContext)">
+        <a asp-controller="Account" asp-action="Register">Register Account</a>
+    </li>
 </ul>
 

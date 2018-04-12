@@ -17,11 +17,15 @@ namespace Redoak_Backoffice.Views.Manage
 
         public static string EditRole => "EditRole";
 
+        public static string RegisterAccount => "RegisterAccount";
+
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
 
         public static string EditRoleClass(ViewContext viewContext) => PageNavClass(viewContext, EditRole);
+
+        public static string RegisterAccountClass(ViewContext viewContext) => PageNavClass(viewContext, RegisterAccount);
 
         public static string PageNavClass(ViewContext viewContext, string page)
         {

@@ -4,11 +4,39 @@
     ViewData["Title"] = "Edit Role";
     ViewData.AddActivePage(ManageNavPages.EditRole);
 }
-<h4>@ViewData["Title"]</h4>
-<div class="row">
-    <div class="col-md-6">
-    </div>
-</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">編號</th>
+            <th scope="col">帳號</th>
+            <th scope="col">姓名</th>
+            <th scope="col">功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var no = 1;
+
+            foreach (var item in Model.Users)
+            {
+                string trClass = no % 2 == 1 ? "table-active" : "";
+
+                <tr class="@trClass">
+                    <td style="vertical-align: middle;">@no</td>
+                    <td>@item.Email</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="EditUser">編輯</a>
+                        <a class="btn btn-danger" asp-action="DeleteUser">刪除</a>
+                    </td>
+                </tr>
+                no++;
+            }
+        }
+    </tbody>
+</table>
+
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")

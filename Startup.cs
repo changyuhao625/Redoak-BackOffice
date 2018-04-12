@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -74,7 +75,7 @@ namespace Redoak.Backoffice
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
-
+            services.AddAutoMapper();
 
             var builder = new ContainerBuilder();
 

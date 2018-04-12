@@ -1,7 +1,14 @@
 ﻿using System;
+using AutoMapper;
+using Redoak.Model.Models;
+
 namespace Redoak.Backoffice.App_Start.AutoMapper
 {
-    public interface ManagePrifile
+    public class ManagePrifile : Profile
     {
+        public ManagePrifile()
+        {
+            //CreateMap<AspNetUsers,>
+        }
     }
 }
