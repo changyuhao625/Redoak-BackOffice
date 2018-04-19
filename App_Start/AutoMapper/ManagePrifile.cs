@@ -1,8 +1,6 @@
-﻿using System;
-using AutoMapper;
-using Redoak.Model.Models;
+﻿using AutoMapper;
 
-namespace Redoak.Backoffice.App_Start.AutoMapper
+namespace Redoak.Backoffice.AutoMapper
 {
     public class ManagePrifile : Profile
     {

@@ -5,13 +5,20 @@
     <UserSecretsId>aspnet-Redoak_Backoffice-06920D76-5D1A-4B37-9EE9-EDD22E5FE4C3</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\ApplicationRole.cs" />
+    <Compile Remove="Models\ApplicationUser.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Autofac" Version="4.7.1" />
     <PackageReference Include="Autofac.Configuration" Version="4.0.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.375" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
@@ -25,13 +32,19 @@
 
   <ItemGroup>
     <Content Remove="Views\Manage\ResetAuthenticator.cshtml" />
+    <Content Remove="wwwroot\js\Common.js" />
+    <Content Remove="wwwroot\js\common.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Redoak.Model\Redoak.Model.csproj" />
-    <ProjectReference Include="..\Redoak.Domain\Redoak.Domain.csproj" />
     <ProjectReference Include="..\Redoak.Core\Redoak.Core.csproj" />
+    <ProjectReference Include="..\Redoak.Domain.Model\Redoak.Domain.Model.csproj" />
+    <ProjectReference Include="..\Redoak.Domain\Redoak.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\AutoMapper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\common.js" />
+    <None Include="wwwroot\lib\jquery-comfirm\dist\jquery-confirm.min.js" />
   </ItemGroup>
 </Project>

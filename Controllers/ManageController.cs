@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -6,16 +8,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Redoak.Backoffice.Models;
+using Redoak.Backoffice.Models.Enum;
 using Redoak.Backoffice.Models.ManageViewModels;
 using Redoak.Backoffice.Services;
+using Redoak.Domain.Cache;
 using Redoak.Domain.Interface;
+using Redoak.Domain.Model.ViewModel;
 
 namespace Redoak.Backoffice.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
@@ -24,6 +28,7 @@ namespace Redoak.Backoffice.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UrlEncoder _urlEncoder;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IManageService manageService;
         private readonly IUserService userService;
 
         public ManageController(
@@ -32,7 +37,9 @@ namespace Redoak.Backoffice.Controllers
             IEmailSender emailSender,
             ILogger<ManageController> logger,
             UrlEncoder urlEncoder,
-            IUserService userService)
+            IUserService userService,
+            IManageService manageService,
+            ICacheService cache) : base(cache)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,6 +47,7 @@ namespace Redoak.Backoffice.Controllers
             _logger = logger;
             _urlEncoder = urlEncoder;
             this.userService = userService;
+            this.manageService = manageService;
         }
 
         [TempData] public string StatusMessage { get; set; }
@@ -176,13 +184,54 @@ namespace Redoak.Backoffice.Controllers
         [HttpGet]
         public async Task<IActionResult> EditRole()
         {
-            var model = new EditRoleViewModel()
+            var model = new EditRoleViewModel
             {
                 Users = await userService.GetUser()
             };
 
             return View(model);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveUser(EditUserViewModel model)
+        {
+            try
+            {
+
+                //todo:refactor
+                var userData = await manageService.GetEditUserAsync(model.UserId);
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                await _userManager.RemoveFromRolesAsync(user, userData.Roles.Select(x => x.RoleId));
+                var result = await _userManager.AddToRolesAsync(user, model.UserRoleValue);
+                if (result.Succeeded) return Json("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return Json("Fail");
+            }
+
+            return Json("Fail");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(string userId)
+        {
+            var data = await manageService.GetEditUserAsync(userId);
+            var model = new EditUserViewModel
+            {
+                UserInfo = data.userInfo,
+                RoleList = await Cache.Roles(),
+                UserName = data.userInfo.UserName,
+                UserId = data.userInfo.Id,
+                UserRoles = data.Roles
+            };
+
+            return PartialView(model);
+        }
+
 
         #region Helpers
 

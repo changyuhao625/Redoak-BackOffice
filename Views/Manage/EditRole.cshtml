@@ -5,39 +5,58 @@
     ViewData.AddActivePage(ManageNavPages.EditRole);
 }
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">編號</th>
-            <th scope="col">帳號</th>
-            <th scope="col">姓名</th>
-            <th scope="col">功能</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var no = 1;
+<div id="EditRoleDiv">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">編號</th>
+                <th scope="col">帳號</th>
+                <th scope="col">姓名</th>
+                <th scope="col">功能</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var no = 1;
 
-            foreach (var item in Model.Users)
-            {
-                string trClass = no % 2 == 1 ? "table-active" : "";
+                foreach (var item in Model.Users)
+                {
+                    string trClass = no % 2 == 1 ? "table-active" : "";
 
-                <tr class="@trClass">
-                    <td style="vertical-align: middle;">@no</td>
-                    <td>@item.Email</td>
-                    <td>@item.UserName</td>
-                    <td>
-                        <a class="btn btn-primary" asp-action="EditUser">編輯</a>
-                        <a class="btn btn-danger" asp-action="DeleteUser">刪除</a>
-                    </td>
-                </tr>
-                no++;
+                    <tr class="@trClass">
+                        @Html.Hidden("UserId", item.Id)
+                        <td style="vertical-align: middle;">@no</td>
+                        <td>@item.Email</td>
+                        <td>@item.UserName</td>
+                        <td>
+                            <a class="btn btn-primary" name="EditUser">編輯</a>
+                            <a class="btn btn-danger" name="DeleteUser">刪除</a>
+                        </td>
+                    </tr>
+                    no++;
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
 
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script type="text/javascript">
+        $('a[name="EditUser"]').click(function () {
+            Base.SendAjax({
+                url: "@Url.Action("EditUser")",
+                data: $(this).closest('tr').find('input').serialize(),
+                dataType:"html",
+                callback: function (result) {
+                    $('#EditRoleDiv').html(result);
+                },
+                callbackError: function () {
+                }
+            });
+        });
+    </script>
 }

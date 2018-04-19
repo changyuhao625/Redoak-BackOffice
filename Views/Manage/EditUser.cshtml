@@ -1,0 +1,45 @@
+﻿@using Redoak.Domain.Model.Models
+@model Redoak.Backoffice.Models.ManageViewModels.EditUserViewModel
+@{
+    Layout = string.Empty;
+}
+
+<form asp-controller="Manage" asp-action="SaveUser" data-ajax="true" data-ajax-method="POST" data-ajax-success="SaveCallBack">
+    <table class="table table-bordered">
+        @Html.HiddenFor(x => x.UserId)
+        <tr>
+            <th>姓名:</th>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <th>帳號:</th>
+            <td>@Model.UserId</td>
+        </tr>
+        <tr>
+            <th>權限:</th>
+            <td>
+                @foreach (var item in Model.RoleList)
+                {
+
+                    <input type="checkbox" name="@($"UserRoleValue")" value="@item.Id"
+                           @(Model.UserRoles.Any(x => x.RoleId == item.Id) ? "checked" : string.Empty) />
+                    <label>@item.Name</label>
+                }
+            </td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <button type="button" class="btn" id="Cancel">取消</button>
+        <button type="submit" class="btn btn-primary" id="Save">儲存</button>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $('#Cancel').click(function () {
+        $('li.active>a')[0].click();
+    });
+
+    SaveCallBack = function (result) {
+        Base.Success(null, result, true);
+    }
+</script>

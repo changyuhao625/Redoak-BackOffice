@@ -8,11 +8,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Redoak.Backoffice.App_Start.Autofac;
+using Redoak.Backoffice.Autofac;
 using Redoak.Backoffice.Data;
-using Redoak.Backoffice.Models;
 using Redoak.Backoffice.Services;
-using Redoak.Model.Models;
+using Redoak.Domain.Model.Models;
+using Redoak.Domain.Model.ViewModel;
+using Redoak.Domain.Service;
 
 namespace Redoak.Backoffice
 {
@@ -33,6 +34,8 @@ namespace Redoak.Backoffice
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<RedoakSignInManager<ApplicationUser>, RedoakSignInManager<ApplicationUser>>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -75,6 +78,7 @@ namespace Redoak.Backoffice
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+            services.AddMemoryCache();
             services.AddAutoMapper();
 
             var builder = new ContainerBuilder();
@@ -95,7 +99,9 @@ namespace Redoak.Backoffice
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app,
+            IHostingEnvironment env,
+            IApplicationLifetime appLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -118,6 +124,8 @@ namespace Redoak.Backoffice
                     "default",
                     "{controller=Account}/{action=Login}/{id?}");
             });
+
+            appLifetime.ApplicationStarted.Register(() => { });
         }
     }
 }

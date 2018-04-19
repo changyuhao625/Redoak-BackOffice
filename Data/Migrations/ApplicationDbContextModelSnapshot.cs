@@ -121,7 +121,7 @@ namespace Redoak.Backoffice.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Redoak_Backoffice.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Redoak.Domain.Model.ViewModel.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -180,7 +180,7 @@ namespace Redoak.Backoffice.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Redoak_Backoffice.Models.ApplicationUser")
+                    b.HasOne("Redoak.Domain.Model.ViewModel.ApplicationUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -188,7 +188,7 @@ namespace Redoak.Backoffice.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Redoak_Backoffice.Models.ApplicationUser")
+                    b.HasOne("Redoak.Domain.Model.ViewModel.ApplicationUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -201,7 +201,7 @@ namespace Redoak.Backoffice.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Redoak_Backoffice.Models.ApplicationUser")
+                    b.HasOne("Redoak.Domain.Model.ViewModel.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

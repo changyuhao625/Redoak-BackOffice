@@ -1,202 +1,217 @@
-
-\.vs/Redoak-Backoffice/v15/\.suo
-
-*.ide-wal
-
-bin/Release/netcoreapp2\.0/Redoak\.Backoffice\.deps\.json
-
-bin/Release/netcoreapp2\.0/Redoak\.Backoffice\.dll
-
-bin/Release/netcoreapp2\.0/Redoak\.Backoffice\.pdb
-
-bin/Release/netcoreapp2\.0/Redoak\.Backoffice\.runtimeconfig\.dev\.json
-
-bin/Release/netcoreapp2\.0/Redoak\.Backoffice\.runtimeconfig\.json
-
-bin/Release/netcoreapp2\.0/Redoak\.Core\.dll
-
-bin/Release/netcoreapp2\.0/Redoak\.Core\.pdb
-
-bin/Release/netcoreapp2\.0/Redoak\.Dal\.dll
-
-bin/Release/netcoreapp2\.0/Redoak\.Dal\.pdb
-
-bin/Release/netcoreapp2\.0/Redoak\.Domain\.dll
-
-bin/Release/netcoreapp2\.0/Redoak\.Domain\.pdb
-
-bin/Release/netcoreapp2\.0/Redoak\.Model\.dll
-
-bin/Release/netcoreapp2\.0/Redoak\.Model\.pdb
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.csproj\.FileListAbsolute\.txt
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.csprojResolveAssemblyReference\.cache
-
-obj/Release/netcoreapp2\.0/microsoft\.aspnetcore\.mvc\.razor\.viewcompilation\.rsp
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Autofac\.Configuration\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Autofac\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Autofac\.Extensions\.DependencyInjection\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/dotnet-aspnet-codegenerator-design\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.CodeAnalysis\.CSharp\.Workspaces\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.CodeAnalysis\.Workspaces\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.Contracts\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.Core\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.EntityFrameworkCore\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.Templating\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGeneration\.Utils\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Microsoft\.VisualStudio\.Web\.CodeGenerators\.Mvc\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/NuGet\.Frameworks\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.PrecompiledViews\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.PrecompiledViews\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.deps\.json
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.PrecompiledViews\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.PrecompiledViews\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Backoffice\.runtimeconfig\.json
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Core\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Core\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Dal\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Dal\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Domain\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Domain\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Model\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak\.Model\.pdb
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/System\.Composition\.AttributedModel\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/System\.Composition\.Convention\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/System\.Composition\.Hosting\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/System\.Composition\.Runtime\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/System\.Composition\.TypedParts\.dll
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/web\.config
-
-obj/Release/netcoreapp2\.0/PubTmp/Redoak\.Backoffice\.Parameters\.xml
-
-obj/Release/netcoreapp2\.0/PubTmp/Redoak\.Backoffice\.SourceManifest\.xml
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.AssemblyInfo\.cs
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.AssemblyInfoInputs\.cache
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.csproj\.CopyComplete
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.csproj\.CoreCompileInputs\.cache
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.csproj\.FileListAbsolute\.txt
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.csprojResolveAssemblyReference\.cache
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.dll
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.pdb
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.PrecompiledViews\.dll
-
-obj/Release/netcoreapp2\.0/Redoak\.Backoffice\.PrecompiledViews\.pdb
-
-obj/Release/netcoreapp2\.0/UserSecretsAssemblyInfo\.cs
-
-Redoak\.Backoffice\.csproj\.user
-
-Properties/PublishProfiles/Redoak-Backoffice - Web Deploy\.pubxml\.user
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.deps\.json
-
-obj/Release/netcoreapp2\.0/PubTmp/Out/Redoak-Backoffice\.runtimeconfig\.json
-
-Properties/PublishProfiles/Redoak-Backoffice - Web Deploy\.pubxml
-
-\.vs/Redoak-Backoffice/v15/Server/sqlite3/storage\.ide
-
-\.vs/Redoak-Backoffice/v15/Server/sqlite3/storage\.ide-shm
-
-\.vs/Redoak-Backoffice/xs/sqlite3/db\.lock
-
-\.vs/Redoak-Backoffice/xs/sqlite3/storage\.ide
-
-\.vs/Redoak-Backoffice/xs/sqlite3/storage\.ide-shm
-
-bin/Debug/netcoreapp2\.0/Redoak\.Backoffice\.dll
-
-bin/Debug/netcoreapp2\.0/Redoak\.Backoffice\.pdb
-
-bin/Debug/netcoreapp2\.0/Redoak\.Backoffice\.runtimeconfig\.dev\.json
-
-bin/Debug/netcoreapp2\.0/Redoak\.Backoffice\.runtimeconfig\.json
-
-bin/Debug/netcoreapp2\.0/Redoak\.Core\.dll
-
-bin/Debug/netcoreapp2\.0/Redoak\.Dal\.dll
-
-bin/Debug/netcoreapp2\.0/Redoak\.Dal\.pdb
-
-bin/Debug/netcoreapp2\.0/Redoak\.Domain\.dll
-
-bin/Debug/netcoreapp2\.0/Redoak\.Domain\.pdb
-
-bin/Debug/netcoreapp2\.0/Redoak\.Model\.dll
-
-bin/Debug/netcoreapp2\.0/Redoak\.Model\.pdb
-
-bin/Debug/netcoreapp2\.0/Redoak\.Backoffice\.deps\.json
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.AssemblyInfo\.cs
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.AssemblyInfoInputs\.cache
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.csproj\.CoreCompileInputs\.cache
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.dll
-
-obj/Debug/netcoreapp2\.0/Redoak\.Backoffice\.pdb
-
-obj/Debug/netcoreapp2\.0/UserSecretsAssemblyInfo\.cs
-
-obj/project\.assets\.json
-
-obj/Redoak\.Backoffice\.csproj\.nuget\.cache
-
-obj/Redoak\.Backoffice\.csproj\.nuget\.g\.props
-
-obj/Redoak\.Backoffice\.csproj\.nuget\.g\.targets
+## Ignore Visual Studio temporary files, build results, and
+## files generated by popular Visual Studio add-ons.
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# DNX
+project.lock.json
+artifacts/
+
+*_i.c
+*_p.c
+*_i.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Chutzpah Test files
+_Chutzpah*
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# TFS 2012 Local Workspace
+$tf/
+
+# Guidance Automation Toolkit
+*.gpState
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JustCode is a .NET coding add-in
+.JustCode
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+# TODO: Comment the next line if you want to checkin your web deploy settings 
+# but database connection strings (with potential passwords) will be unencrypted
+*.pubxml
+*.publishproj
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+
+# Windows Azure Build Output
+csx/
+*.build.csdef
+
+# Windows Store app package directory
+AppPackages/
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
+
+# Others
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+node_modules/
+orleans.codegen.cs
+
+# RIA/Silverlight projects
+Generated_Code/
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
