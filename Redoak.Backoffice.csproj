@@ -41,7 +41,14 @@
     <ProjectReference Include="..\Redoak.Domain\Redoak.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Start\AutoMapper\" />
+    <Folder Include="Areas\Order\Data\" />
+    <Folder Include="Areas\Order\Models\" />
+    <Folder Include="Areas\Report\Data\" />
+    <Folder Include="Areas\Report\Models\" />
+    <Folder Include="Areas\Stock\Data\" />
+    <Folder Include="Areas\Stock\Models\" />
+    <Folder Include="Areas\Stock\Views\" />
+    <Folder Include="Areas\System\Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\js\common.js" />

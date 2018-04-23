@@ -12,63 +12,37 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/pure-release-1.0.0/pure.css">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css" />
+        <link rel="stylesheet" href="~/css/loading.mask.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/pure-release-1.0.0/pure.css">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Account" asp-action="Login" class="navbar-brand">紅橡國際農產-管理系統</a>
-            </div>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a asp-area="" asp-controller="Order" asp-action="Index">訂單管理</a>
-                            @*<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                訂單模組
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="" href="#">訂單查詢</a>
-                             </div>*@
-                        </li>
-                        <li><a asp-area="" asp-controller="Stock" asp-action="Index">庫存管理</a></li>
-                        <li><a asp-area="" asp-controller="Customer" asp-action="Index">客戶管理</a></li>
-                        <li>@*<a asp-area="" asp-controller="Report" asp-action="Contact">Index</a>*@</li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            }
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - 紅橡國際農產</p>
-        </footer>
+
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed l-box">
+        <div class="pure-menu-heading">紅橡國際農產-管理系統</div>
+        @await Html.PartialAsync("_MenuView")
     </div>
 
+    <div class="splash-container">
+        <div class="splash"> @RenderBody()</div>
+
+        <div class="footer l-box is-center">
+            &copy; 2018 - 紅橡國際農產
+        </div>
+    </div>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/common.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/lib/Microsoft.jQuery.Unobtrusive.Ajax-master/jquery.unobtrusive-ajax.js"></script>
         <script src="~/lib/jquery-comfirm/dist/jquery-confirm.min.js"></script>
@@ -95,7 +69,7 @@
         <script src="~/lib/jquery-blockUI/jquery.blockUI.js"></script>
         <script src="~/js/redoak.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

@@ -5,20 +5,15 @@
     "outputFileName": "wwwroot/css/site.min.css",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
-      "wwwroot/css/site.css"
-      //"wwwroot/lib/jquery-comfirm/dist/jquery-confirm.min.css"
+      "wwwroot/css/site.css",
+      "wwwroot/css/loading.mask.css"
     ]
   },
   {
     "outputFileName": "wwwroot/js/redoak.min.js",
     "inputFiles": [
-      //"wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-      //"wwwroot/lib/Microsoft.jQuery.Unobtrusive.Ajax-master/jquery.unobtrusive-ajax.js",
-      //"wwwroot/lib/jquery-comfirm/dist/jquery-confirm.min.js",
-      //"wwwroot/lib/jquery-blockUI/jquery.blockUI.js",
       "wwwroot/js/common.js",
       "wwwroot/js/jquery-extension.js"
-
     ],
     // Optionally specify minification options
     "minify": {

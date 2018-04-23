@@ -22,7 +22,7 @@
                 {
 
                     <input type="checkbox" name="@($"UserRoleValue")" value="@item.Id"
-                           @(Model.UserRoles.Any(x => x.RoleId == item.Id) ? "checked" : string.Empty) />
+                           @(Model.UserRoles.Any(x => x == item.Id) ? "checked" : string.Empty) />
                     <label>@item.Name</label>
                 }
             </td>

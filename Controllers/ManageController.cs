@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Redoak.Backoffice.Models.Enum;
 using Redoak.Backoffice.Models.ManageViewModels;
 using Redoak.Backoffice.Services;
 using Redoak.Domain.Cache;
@@ -182,6 +181,7 @@ namespace Redoak.Backoffice.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditRole()
         {
             var model = new EditRoleViewModel
@@ -194,17 +194,13 @@ namespace Redoak.Backoffice.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveUser(EditUserViewModel model)
         {
             try
             {
-
-                //todo:refactor
-                var userData = await manageService.GetEditUserAsync(model.UserId);
-                var user = await _userManager.FindByIdAsync(model.UserId);
-                await _userManager.RemoveFromRolesAsync(user, userData.Roles.Select(x => x.RoleId));
-                var result = await _userManager.AddToRolesAsync(user, model.UserRoleValue);
+                var result = await this.manageService.SaveUser(model.UserId, model.UserRoleValue);
                 if (result.Succeeded) return Json("Success");
             }
             catch (Exception e)
@@ -217,6 +213,7 @@ namespace Redoak.Backoffice.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditUser(string userId)
         {
             var data = await manageService.GetEditUserAsync(userId);

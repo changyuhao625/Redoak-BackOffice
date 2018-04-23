@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Redoak.Domain.Model.Models;
 using Redoak.Domain.Model.ViewModel;
 
@@ -17,17 +18,17 @@ namespace Redoak.Backoffice.Models.ManageViewModels
         /// <summary>
         ///     User Info
         /// </summary>
-        public AspNetUsers UserInfo { get; set; }
+        public ApplicationUser UserInfo { get; set; }
 
         /// <summary>
         ///     Whole System Role List
         /// </summary>
-        public IList<AspNetRoles> RoleList { get; set; }
+        public IList<IdentityRole> RoleList { get; set; }
 
         /// <summary>
         ///     Get the role of select user
         /// </summary>
-        public IList<AspNetUserRoles> UserRoles { get; set; }
+        public IList<string> UserRoles { get; set; }
 
         /// <summary>
         ///     For model binding

@@ -125,6 +125,21 @@ namespace Redoak.Backoffice
                     "{controller=Account}/{action=Login}/{id?}");
             });
 
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "Order",
+                    template: "{area=Order}/{controller=OrderManage}/{action=Index}/{id?}"
+                );
+            });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "System",
+                    template: "{area=System}/{controller=SystemManage}/{action=Index}/{id?}"
+                );
+            });
             appLifetime.ApplicationStarted.Register(() => { });
         }
     }

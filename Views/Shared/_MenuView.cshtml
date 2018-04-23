@@ -1,0 +1,47 @@
+﻿@using Redoak.Domain.Model.ViewModel
+@{
+    Layout = null;
+}
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">訂單模組</a>
+            <ul class="pure-menu-children">
+                @*<a asp-area="" asp-controller="Order" asp-action="Index">訂單管理</a>*@
+
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">訂單管理</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">訂單查詢</a></li>
+            </ul>
+        </li>
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">進銷模組</a>
+            <ul class="pure-menu-children">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">進貨管理</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">銷貨管理</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">報價管理</a></li>
+            </ul>
+        </li>
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">報表模組</a>
+            <ul class="pure-menu-children">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">訂單報表查詢</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">進銷報表查詢</a></li>
+            </ul>
+        </li>
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">系統模組</a>
+            <ul class="pure-menu-children">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">人員管理</a></li>
+            </ul>
+            <ul class="pure-menu-children">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">帳號註冊</a></li>
+            </ul>
+        </li>
+    </ul>
+    @await Html.PartialAsync("_LoginPartial")
+
+}

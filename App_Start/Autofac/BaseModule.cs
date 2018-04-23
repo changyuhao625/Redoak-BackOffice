@@ -15,30 +15,15 @@ namespace Redoak.Backoffice.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<RoleStore<IdentityRole>>()
-            //    .As<IRoleStore<ApplicationRole>>()
-            //    .SingleInstance();
-
-            //builder.RegisterType<RoleValidator<IdentityRole>>()
-            //    .As<RoleValidator<ApplicationRole>>()
-            //    .SingleInstance();
-
-            //builder.RegisterType<RoleManager<IdentityRole>>()
-            //    .SingleInstance();
-
             builder.RegisterType<MemoryCache>()
                 .WithParameter("optionsAccessor", new MemoryCacheOptions())
                 .As<IMemoryCache>()
                 .SingleInstance();
 
             builder.RegisterType<CacheService>()
-                //.WithParameters(new List<Parameter>()
-                //{
-                //    new NamedParameter("roleManager", new RoleManager<ApplicationRole>())
-                //})
                 .As<ICacheService>()
                 .SingleInstance();
-            //RoleManager<ApplicationRole> roleManager)
+
             base.Load(builder);
         }
     }
