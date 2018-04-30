@@ -1,4 +1,4 @@
-﻿@using Redoak.Backoffice.Models
+﻿@using Microsoft.AspNetCore.Identity
 @using Redoak.Domain.Model.ViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -69,7 +69,7 @@
         <script src="~/lib/jquery-blockUI/jquery.blockUI.js"></script>
         <script src="~/js/redoak.min.js" asp-append-version="true"></script>
     </environment>
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 
 </body>
 </html>

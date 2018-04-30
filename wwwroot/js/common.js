@@ -24,12 +24,28 @@ var Base = {
             dataType: para.dataType
         });
     },
+    Get: function (para) {
+        var data = {};
+
+        if (para.data !== undefined) {
+            data = para.data;
+        }
+
+        $.get(para.url, data).done(function (result) {
+            if (typeof para.callback === "function") {
+                para.callback(result);
+            }
+        }).fail(function (result) {
+            if (typeof para.callbackError === "function") {
+                para.callbackError(result);
+            }
+        });
+    },
     Success: function (title, message, autoClose) {
 
         var data = {
-            title: 'Success'
+            title: "Success"
         };
-
 
 
         if (title) {
@@ -40,40 +56,57 @@ var Base = {
             data.content = message;
         }
 
-        $.dialog(data);
+        $.confirm({
+            title: data.title,
+            content: message,
+            type: "green",
+            typeAnimated: true,
+            buttons: {
+                OK: function () { }
+            }
+        });
+
         if (autoClose) {
             setTimeout(
                 function () {
-                    $('div.jconfirm-closeIcon')[0].click();
-                }, 1000);
+                    $("div.jconfirm-closeIcon")[0].click();
+                },
+                1000);
+        }
+    },
+    Error: function (title, message, autoClose) {
+
+        var data = {
+            title: "Error"
+        };
+
+        if (title) {
+            data.title = title;
+        }
+
+        if (message) {
+            data.content = message;
+        }
+
+        $.confirm({
+            title: data.title,
+            content: message,
+            type: "red",
+            typeAnimated: true,
+            buttons: {
+                OK: function () { }
+            }
+        });
+
+        if (autoClose) {
+            setTimeout(
+                function () {
+                    $("div.jconfirm-closeIcon")[0].click();
+                },
+                1000);
         }
     }
-
-    //Success: function (title, message, buttons, autoClose) {
-
-    //    var data = {
-    //        title: 'Success',
-    //        buttons: {}
-    //    };
-    //    if (buttons) {
-    //        data.buttons = buttons;
-    //    }
-
-    //    if (autoClose) {
-    //        data.autoClose = true;
-    //    }
-
-    //    if (title) {
-    //        data.title = title;
-    //    }
-
-    //    if (message) {
-    //        data.content = message;
-    //    }
-
-    //    $.confirm(data);
-    //}
 };
 
 $(function () {
-})
+});

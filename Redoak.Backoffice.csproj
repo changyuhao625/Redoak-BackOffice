@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Remove="Models\ApplicationRole.cs" />
     <Compile Remove="Models\ApplicationUser.cs" />
   </ItemGroup>
@@ -47,8 +50,9 @@
     <Folder Include="Areas\Report\Models\" />
     <Folder Include="Areas\Stock\Data\" />
     <Folder Include="Areas\Stock\Models\" />
-    <Folder Include="Areas\Stock\Views\" />
     <Folder Include="Areas\System\Data\" />
+    <Folder Include="Areas\System\Models\UserManage\" />
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\js\common.js" />

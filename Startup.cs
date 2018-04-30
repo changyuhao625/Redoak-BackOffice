@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Redoak.Backoffice.Autofac;
-using Redoak.Backoffice.Data;
 using Redoak.Backoffice.Services;
 using Redoak.Domain.Model.Models;
 using Redoak.Domain.Model.ViewModel;
@@ -30,10 +29,12 @@ namespace Redoak.Backoffice
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RedoakContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Redoak.Domain.Model")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Redoak.Domain.Model")));
 
             services.AddScoped<RedoakSignInManager<ApplicationUser>, RedoakSignInManager<ApplicationUser>>();
 
@@ -123,23 +124,18 @@ namespace Redoak.Backoffice
                 routes.MapRoute(
                     "default",
                     "{controller=Account}/{action=Login}/{id?}");
+
+                //routes.MapRoute(
+                //    name: "Order",
+                //    template: "{area=Order}/{controller}/{action=Index}/{id?}"
+                //);
+
+                //routes.MapRoute(
+                //    name: "System",
+                //    template: "{area=System}/{controller}/{action=Index}"
+                //);
             });
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "Order",
-                    template: "{area=Order}/{controller=OrderManage}/{action=Index}/{id?}"
-                );
-            });
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "System",
-                    template: "{area=System}/{controller=SystemManage}/{action=Index}/{id?}"
-                );
-            });
             appLifetime.ApplicationStarted.Register(() => { });
         }
     }

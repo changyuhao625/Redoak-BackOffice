@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Redoak.Backoffice.Areas.System.Models.UserManage
+namespace Redoak.Backoffice.Areas.System.Models.PersonalProfile
 {
-    public class PensonalProfileModel
+    public class PensonalProfileViewModel
     {
         [Required] [Display(Name = "使用者名稱")] public string Username { get; set; }
 

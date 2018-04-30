@@ -1,0 +1,45 @@
+﻿@using Redoak.Domain.Model.ViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager;
+@inject UserManager<ApplicationUser> UserManager;
+@*"active"*@
+<div class="row">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                <a href="#" id="PersonalProfile" value="0">個人資料</a>
+            </li>
+            <li>
+                <a href="#" id="ChangePassword" value="1">密碼變更</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-9" id="PersonalProfileDiv">
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(function() {
+            $('#PersonalProfile,#ChangePassword').click(RenderPartial);
+            $('#PersonalProfile').click();
+        });
+
+        RenderPartial = function () {
+            $('#PersonalProfile,#ChangePassword').parent('li').removeClass('active');
+
+            $(this).parent('li').addClass('active');
+
+            var url = ['@Url.Action("PersonalProfile")', '@Url.Action("ChangePassword")'];
+            Base.Get({
+                url: url[parseInt($(this).attr('value'))],
+                callback: function (html) {
+                    $('#PersonalProfileDiv').html(html);
+                }
+            });
+        }
+    </script>
+}

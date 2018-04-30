@@ -1,7 +1,14 @@
-﻿@model Redoak.Backoffice.Areas.System.Models.UserManage.PensonalProfileModel
+﻿@using Redoak.Backoffice.Areas.System.Models.PersonalProfile
+@model Redoak.Backoffice.Areas.System.Models.PersonalProfile.PensonalProfileViewModel
 <div class="row">
     <div class="col-md-6">
-        <form method="post">
+        <form asp-controller="PersonalProfile"
+              asp-action="SavePersonalProfile"
+              asp-area="System"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-success="SaveCallBack"
+              data-ajax-failure="SaveCallBackError">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserId"></label>
@@ -13,6 +20,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -20,7 +29,21 @@
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-default">存檔</button>
         </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+    SaveCallBack = function (result) {
+        Base.Success(null, result, true);
+    }
+
+    SaveCallBackError = function (event, jqxhr, settings, thrownError) {
+    }
+
+</script>
