@@ -3,15 +3,16 @@
 
 @inject SignInManager<ApplicationUser> SignInManager;
 @inject UserManager<ApplicationUser> UserManager;
-@*"active"*@
+
+
 <div class="row">
     <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active">
-                <a href="#" id="PersonalProfile" value="0">個人資料</a>
+        <ul class="nav-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" id="PersonalProfile" value="0">個人資料</a>
             </li>
-            <li>
-                <a href="#" id="ChangePassword" value="1">密碼變更</a>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="ChangePassword" value="1">密碼變更</a>
             </li>
         </ul>
     </div>
@@ -29,9 +30,9 @@
         });
 
         RenderPartial = function () {
-            $('#PersonalProfile,#ChangePassword').parent('li').removeClass('active');
+            $('#PersonalProfile,#ChangePassword').removeClass('active');
 
-            $(this).parent('li').addClass('active');
+            $(this).addClass('active');
 
             var url = ['@Url.Action("PersonalProfile")', '@Url.Action("ChangePassword")'];
             Base.Get({
