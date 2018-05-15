@@ -1,0 +1,64 @@
+﻿@model Redoak.Backoffice.Areas.System.Models.UserRole.UserRoleModel
+
+@{
+    ViewData["Module"] = "系統模組";
+    ViewData["Title"] = "人員權限管理";
+}
+
+<div id="EditRoleDiv">
+    <div class="table-responsive-md">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">編號</th>
+                <th scope="col">帳號</th>
+                <th scope="col">姓名</th>
+                <th scope="col">功能</th>
+            </tr>
+            </thead>
+            <tbody>
+            @{
+                var no = 1;
+
+                foreach (var item in Model.Users)
+                {
+                    string trClass = no % 2 == 1 ? "table-active" : "";
+
+                    <tr>
+                        @Html.Hidden("UserId", item.Id)
+                        <td style="vertical-align: middle;">@no</td>
+                        <td>@item.Email</td>
+                        <td>@item.UserName</td>
+                        <td>
+                            <a class="btn btn-info" name="EditUser">編輯</a>
+                            <a class="btn btn-danger" name="DeleteUser">刪除</a>
+                        </td>
+                    </tr>
+                    no++;
+                }
+            }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @*@await Html.PartialAsync("_ValidationScriptsPartial")*@
+
+    <script type="text/javascript">
+        $('a[name="EditUser"]').click(function () {
+            Base.SendAjax({
+                url: "@Url.Action("EditUserRole")",
+                data: $(this).closest('tr').find('input').serialize(),
+                dataType:"html",
+                callback: function (result) {
+                    $('#EditRoleDiv').html(result);
+                },
+                callbackError: function () {
+                }
+            });
+        });
+    </script>
+}

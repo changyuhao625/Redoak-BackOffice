@@ -1,0 +1,39 @@
+﻿@model Redoak.Backoffice.Areas.System.Models.UserRole.EditUserRoleViewModel
+
+<form asp-action="SaveUser" data-ajax="true" data-ajax-method="POST" data-ajax-success="SaveCallBack">
+    @Html.HiddenFor(x => x.UserId)
+    <div class="form-group row">
+        <label asp-for="UserName" class="col-form-label  col-form-label-lg col-md-2"></label>
+        <input asp-for="UserName" disabled="disabled" class="form-control col-md-6" />
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-form-label-lg col-md-2">權限</label>
+        <div class="col-md-6">
+            @foreach (var item in Model.RoleList)
+            {
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" name="@($"UserRoleValue")" value="@item.Id" class="form-check-input"
+                           @(Model.UserRoles.Any(x => x == item.Id) ? "checked" : string.Empty) />
+                    <label class="form-check-label">@item.Name</label>
+                </div>
+            }
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-info" id="Save">存檔</button>
+            <button type="button" class="btn btn-danger" id="Cancel">取消</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $('#Cancel').click(function () {
+        location.reload(true);
+    });
+
+    SaveCallBack = function (result) {
+        Base.Success(null, result, true);
+    };
+</script>

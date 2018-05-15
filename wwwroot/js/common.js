@@ -41,7 +41,7 @@ var Base = {
             }
         });
     },
-    Success: function (title, message, autoClose) {
+    Success: function (title, message, autoClose, callback) {
 
         var data = {
             title: "Success"
@@ -62,7 +62,11 @@ var Base = {
             type: "green",
             typeAnimated: true,
             buttons: {
-                OK: function () { }
+                OK: function() {
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                }
             }
         });
 

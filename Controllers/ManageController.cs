@@ -214,7 +214,7 @@ namespace Redoak.Backoffice.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> EditUser(string userId)
+        public async Task<IActionResult> EditUserRole(string userId)
         {
             var data = await manageService.GetEditUserAsync(userId);
             var model = new EditUserViewModel

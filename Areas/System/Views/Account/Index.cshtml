@@ -1,0 +1,64 @@
+﻿@model Redoak.Backoffice.Areas.System.Models.Account.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form asp-controller="Account"
+              asp-action="Register"
+              asp-area="System"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-success="SaveCallBack"
+              data-ajax-failure="SaveCallBackError">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-info"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-info"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+    SaveCallBack = function (result) {
+        Base.Success(null, result, false, function () {
+            location.reload(true);
+        });
+    }
+
+    SaveCallBackError = function (event, jqxhr, settings, thrownError) {
+
+    }
+</script>
+}

@@ -12,7 +12,6 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        @*<link rel="stylesheet" href="~/lib/pure-release-1.0.0/pure.css">*@
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css" />
         <link rel="stylesheet" href="~/css/loading.mask.css" />
@@ -20,15 +19,14 @@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        @*<link rel="stylesheet" href="~/lib/pure-release-1.0.0/pure.css">*@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css" />
         <link rel="icon" type="image/png" href="~/Redoka-Logo.png" />
     </environment>
 </head>
 <body>
-
     @await Html.PartialAsync("_MenuView")
+    @await Html.PartialAsync("_Breadcrumb")
 
     <div class="container body-content redoak-container">
         @RenderBody()

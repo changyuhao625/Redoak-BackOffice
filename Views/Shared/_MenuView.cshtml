@@ -11,7 +11,7 @@
         <img src="~/Redoka-Logo.png" class="img-fluid" />
     </div>
 
-    <a class="navbar-brand" asp-action="Index" asp-controller="Home">紅橡國際農產</a>
+    <a class="navbar-brand" asp-action="Index" asp-controller="Home">紅橡國際農產-管理系統</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +23,7 @@
                    role="button" data-toggle="dropdown"
                    aria-expanded="false"
                    aria-haspopup="true">
-                    系統模組
+                    訂單模組
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navOrderModule">
                     <a asp-area="System"
@@ -42,13 +42,13 @@
                     進銷模組
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navSystemModule">
-                    <a asp-area="System"
+                    <a asp-area="Stock"
                        asp-controller="PersonalProfile"
                        asp-action="Index"
                        class="dropdown-item">進貨管理</a>
-                    <a asp-area="" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">銷貨管理</a>
-                    <a asp-area="" asp-controller="Account" asp-action="Regist" class="dropdown-item">報價管理</a>
-                    <a asp-area="" asp-controller="Account" asp-action="Regist" class="dropdown-item">商品管理</a>
+                    <a asp-area="Stock" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">銷貨管理</a>
+                    <a asp-area="Stock" asp-controller="QuotationManage" asp-action="Regist" class="dropdown-item">報價管理</a>
+                    <a asp-area="Stock" asp-controller="StockManage" asp-action="Index" class="dropdown-item">商品管理</a>
                 </div>
             </li>
             @* 報表模組 *@
@@ -81,8 +81,15 @@
                        asp-controller="PersonalProfile"
                        asp-action="Index"
                        class="dropdown-item">個人資料管理</a>
-                    <a asp-area="" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">人員權限管理</a>
-                    <a asp-area="" asp-controller="Account" asp-action="Regist" class="dropdown-item">帳號註冊</a>
+
+                    <a asp-area="System"
+                       asp-controller="UserRole"
+                       asp-action="Index" class="dropdown-item">人員權限管理</a>
+
+                    <a asp-area="System"
+                       asp-controller="Account"
+                       asp-action="Index"
+                       class="dropdown-item">帳號註冊</a>
                 </div>
             </li>
         </ul>

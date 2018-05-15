@@ -20,6 +20,10 @@ namespace Redoak.Backoffice.Autofac
                 .As<IManageService>()
                 .SingleInstance();
 
+            builder.RegisterType<UserRoleService>()
+                .As<IUserRoleService>()
+                .SingleInstance();
+
             builder.RegisterType<UserRepository>()
                 .As<UserRepository>();
         }
