@@ -1,4 +1,79 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Redoak.Backoffice.Areas.Stock.Models.StockManage.QueryModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Module"] = "進銷模組";
+    ViewData["Title"] = "商品管理";
+}
+
+<div class="redoak-form-container">
+    <div class="form-row redoak-form-collapse">
+        <button type="button" class="btn btn-dark" id="Query">查詢</button>
+
+        <i class="fas fa-angle-double-down" data-toggle="collapse" href="#SearchForm" aria-expanded="false" aria-controls="SearchForm"></i>
+    </div>
+    <div class="collapse show col-md-12" id="SearchForm">
+        <form>
+
+            @* 時間起迄 *@
+            @*<div class="form-row ">
+                    <div class="form-group col-md-2">
+                        <label class="col-form-label">時間起迄:</label>
+                    </div>
+                    <div class="form-group col-md-10 input-group">
+                        <input type="text" class="form-control" name="datepciker" id="DateFrom" />
+                        <i class="fas fa-angle-right"></i>
+                        <input type="text" class="form-control" name="datepciker" id="DateTo">
+                    </div>
+                </div>*@
+            @* 商品類別 *@
+            <div class="form-row ">
+                <div class="form-group col-md-2">
+                    <label class="col-form-label" asp-for="CategoryId"></label>
+                </div>
+                <div class="form-group col-md-10 input-group">
+                    @Html.DropDownListFor(x => x.CategoryId, Model.CategoryList)
+                </div>
+            </div>
+            @* 商品名稱 *@
+            <div class="form-row ">
+                <div class="form-group col-md-2">
+                    <label asp-for="Name" class="col-form-label"></label>
+                </div>
+                <div class="form-group col-md-4 input-group">
+                    <input class="form-control" asp-for="Name" />
+                </div>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-12 ">
+                    <button type="submit" style="display: none" id="Submit">查詢</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="redoak-result-container" id="result">
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+            //$('input[name="datepciker"]').datepicker({
+            //    //startDate: new Date(),
+            //    format: 'yyyy-mm-dd',
+            //    autoclose: true,
+            //    todayBtn: true,
+            //    todayHighlight: true
+            //});
+
+            //$('input[name="datepciker"]').datepicker('setDate', new Date());
+
+            $('#Query').click(function () {
+                $('#Submit').click();
+            });
+        })
+    </script>
+}

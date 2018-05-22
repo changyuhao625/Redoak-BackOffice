@@ -83,6 +83,7 @@
 .bg-dark {
     background: #282828 !important;
 }
+
 .redoak-container {
     bottom: 0;
     left: 0;
@@ -102,9 +103,9 @@
         max-width: 10%;
         padding-right: 0.3125rem;
     }
+
     .redoak-container {
         top: 100px;
-
     }
 }
 
@@ -119,3 +120,30 @@ background: aqua
 .btn {
     color: #fff !important;
 }
+
+.redoak-form-container {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 0.25rem;
+}
+
+.redoak-result-container {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 10px;
+    margin-top: 0.5em;
+}
+
+.redoak-form-collapse {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+    .redoak-form-collapse > i {
+        cursor: pointer;
+        border: 2px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 5px;
+        cursor: pointer;
+    }

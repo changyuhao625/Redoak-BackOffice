@@ -1,6 +1,12 @@
 ﻿@using Redoak.Domain.Model.ViewModel
 @using Microsoft.AspNetCore.Identity
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Module"] = "系統模組";
+    ViewData["Title"] = "個人資料管理";
+}
+
 @inject SignInManager<ApplicationUser> SignInManager;
 @inject UserManager<ApplicationUser> UserManager;
 

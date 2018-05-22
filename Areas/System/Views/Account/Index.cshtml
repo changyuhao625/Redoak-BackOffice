@@ -1,6 +1,9 @@
 ﻿@model Redoak.Backoffice.Areas.System.Models.Account.RegisterViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Module"] = "系統模組";
+    ViewData["Title"] = "帳號註冊";
 }
 
 <div class="row justify-content-md-center">
@@ -46,19 +49,19 @@
 </div>
 
 @section Scripts{
-<script type="text/javascript">
-    $(function () {
+    <script type="text/javascript">
+        $(function () {
 
-    });
-
-    SaveCallBack = function (result) {
-        Base.Success(null, result, false, function () {
-            location.reload(true);
         });
-    }
 
-    SaveCallBackError = function (event, jqxhr, settings, thrownError) {
+        SaveCallBack = function (result) {
+            Base.Success(null, result, false, function () {
+                location.reload(true);
+            });
+        }
 
-    }
-</script>
+        SaveCallBackError = function (event, jqxhr, settings, thrownError) {
+
+        }
+    </script>
 }
