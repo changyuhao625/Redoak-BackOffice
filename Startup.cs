@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +12,7 @@ using Redoak.Backoffice.Services;
 using Redoak.Domain.Model.Models;
 using Redoak.Domain.Model.ViewModel;
 using Redoak.Domain.Service;
+using System;
 
 namespace Redoak.Backoffice
 {
@@ -78,15 +78,20 @@ namespace Redoak.Backoffice
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            // Multi-Language
+            // 主要的多國語言服務，ResourcesPath 是指定資源檔的目錄位置。
+            services.AddLocalization(option => option.ResourcesPath = "Resources");
+            services.AddMvc()
+                    .AddViewLocalization()              // 在 cshtml 中使用多國語言
+                    .AddDataAnnotationsLocalization();  // 在 Model 中使用多國語言
             services.AddMemoryCache();
             services.AddAutoMapper();
-
+            
             var builder = new ContainerBuilder();
 
             builder.RegisterModule<BaseModule>();
             builder.RegisterModule<ServiceModule>();
-
+            
             builder.Populate(services);
 
             var container = builder.Build();
@@ -103,7 +108,7 @@ namespace Redoak.Backoffice
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
             IApplicationLifetime appLifetime)
-        {
+        {            
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -114,7 +119,7 @@ namespace Redoak.Backoffice
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            
             app.UseStaticFiles();
 
             app.UseAuthentication();
@@ -135,7 +140,7 @@ namespace Redoak.Backoffice
                 //    template: "{area=System}/{controller}/{action=Index}"
                 //);
             });
-
+            
             appLifetime.ApplicationStarted.Register(() => { });
         }
     }
