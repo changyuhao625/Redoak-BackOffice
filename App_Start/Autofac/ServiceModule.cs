@@ -24,6 +24,10 @@ namespace Redoak.Backoffice.Autofac
                 .As<IUserRoleService>()
                 .SingleInstance();
 
+            builder.RegisterType<StockManageService>()
+                .As<IStockManageService>()
+                .SingleInstance();
+
             builder.RegisterType<UserRepository>()
                 .As<UserRepository>();
         }

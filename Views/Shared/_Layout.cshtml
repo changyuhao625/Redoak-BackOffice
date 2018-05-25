@@ -1,28 +1,35 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Redoak.Backoffice
 @using Redoak.Domain.Model.ViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject IViewLocalizer R;
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - 紅橡國際農產-管理系統</title>
+    <title>@ViewData["Title"] - @R["SystemTitle"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.css">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css" />
         <link rel="stylesheet" href="~/css/loading.mask.css" />
         <link rel="icon" type="image/png" href="~/Redoka-Logo.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">*@
+        <link rel="stylesheet" href="~/lib/Guriddo_jqGrid_JS_5.3.1/css/ui.jqgrid-bootstrap4.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"
               asp-fallback-href="~/lib/jquery-comfirm/dist/jquery-confirm.min.css"
@@ -30,10 +37,12 @@
         <link rel="stylesheet" href="~/css/loading.mask.css" />
         <link rel="icon" type="image/png" href="~/Redoka-Logo.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">*@
+        <link rel="stylesheet" href="~/lib/Guriddo_jqGrid_JS_5.3.1/css/ui.jqgrid-bootstrap4.css" />
     </environment>
 </head>
 <body>
+
     @await Html.PartialAsync("_MenuView")
     @await Html.PartialAsync("_Breadcrumb")
 
@@ -46,6 +55,9 @@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/i18n/grid.locale-en.js" s></script>
+        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/jquery.jqGrid.min.js"></script>
+
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/lib/Microsoft.jQuery.Unobtrusive.Ajax-master/jquery.unobtrusive-ajax.js"></script>
@@ -63,6 +75,8 @@
                 crossorigin="anonymous"
                 integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
         </script>
+        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/i18n/grid.locale-en.js" s></script>
+        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/jquery.jqGrid.min.js"></script>
 
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
@@ -76,7 +90,6 @@
         <script src="~/js/redoak.min.js" asp-append-version="true"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"
                 crossorigin="anonymous"></script>
-
     </environment>
     @RenderSection("Scripts", false)
 

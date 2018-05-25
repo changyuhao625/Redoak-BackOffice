@@ -117,7 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OrderModule" xml:space="preserve">
+    <value>訂單模組</value>
+  </data>
+  <data name="OrderModule-OrderManage" xml:space="preserve">
+    <value>訂單管理</value>
+  </data>
+  <data name="OrderModule-OrderQuery" xml:space="preserve">
+    <value>訂單查詢</value>
+  </data>
+  <data name="Redoak" xml:space="preserve">
+    <value>紅橡國際農產</value>
+  </data>
+  <data name="ReportModule" xml:space="preserve">
+    <value>報表模組</value>
+  </data>
+  <data name="ReportModule-訂單報表查詢" xml:space="preserve">
+    <value>訂單報表查詢</value>
+  </data>
+  <data name="ReportModule-進銷報表查詢" xml:space="preserve">
+    <value>進銷報表查詢</value>
+  </data>
+  <data name="StockModule" xml:space="preserve">
+    <value>進銷模組</value>
+  </data>
+  <data name="StockModule-商品管理" xml:space="preserve">
+    <value>商品管理</value>
+  </data>
+  <data name="StockModule-報價管理" xml:space="preserve">
+    <value>報價管理</value>
+  </data>
+  <data name="StockModule-進貨管理" xml:space="preserve">
+    <value>進貨管理</value>
+  </data>
+  <data name="StockModule-銷貨管理" xml:space="preserve">
+    <value>銷貨管理</value>
+  </data>
+  <data name="SystemModule" xml:space="preserve">
+    <value>系統模組</value>
+  </data>
+  <data name="SystemModule-人員權限管理" xml:space="preserve">
+    <value>人員權限管理</value>
+  </data>
+  <data name="SystemModule-個人資料管理" xml:space="preserve">
+    <value>個人資料管理</value>
+  </data>
+  <data name="SystemModule-帳號註冊" xml:space="preserve">
+    <value>帳號註冊</value>
+  </data>
   <data name="SystemTitle" xml:space="preserve">
-    <value>紅橡國際農產－管理系統</value>
+    <value>紅橡國際農產-管理系統</value>
   </data>
 </root>

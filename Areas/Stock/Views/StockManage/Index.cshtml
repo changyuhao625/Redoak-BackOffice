@@ -13,7 +13,13 @@
         <i class="fas fa-angle-double-down" data-toggle="collapse" href="#SearchForm" aria-expanded="false" aria-controls="SearchForm"></i>
     </div>
     <div class="collapse show col-md-12" id="SearchForm">
-        <form>
+        <form asp-controller="StockManage"
+              asp-action="Query"
+              asp-area="Stock"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-success="QueryCallBack"
+              data-ajax-failure="QueryBackError">
 
             @* 時間起迄 *@
             @*<div class="form-row ">
@@ -74,6 +80,17 @@
             $('#Query').click(function () {
                 $('#Submit').click();
             });
-        })
+
+        });
+
+        QueryCallBack = function (result) {
+            $('#result').html(result);
+
+
+            //Base.Success(null, result, true);
+        };
+
+        QueryBackError = function (event, jqxhr, settings, thrownError) {
+        };
     </script>
 }

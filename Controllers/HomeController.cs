@@ -20,9 +20,7 @@ namespace Redoak.Backoffice.Controllers
 
         public IActionResult Index()
         {
-            // 測試程式碼 TODO：測試完移除
-            var a = _localizer["SystemTitle"];
-
+            var xx = _localizer["SystemTitle"];
             return View();
         }
     }

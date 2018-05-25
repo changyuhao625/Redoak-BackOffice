@@ -1,17 +1,22 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Redoak.Domain.Model.ViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Redoak.Backoffice
 @{
     Layout = null;
 }
+@*@inject LocalizeService a;
 
-@inject SignInManager<ApplicationUser> SignInManager;
+@inject IViewLocalizer Localizer;*@
+@inject IHtmlLocalizer<SharedResource> R;
+@*@Localizer["SystemTitle"] <br />
+@R["SystemTitle"] <br />
+@a["SystemTitle"] <br />*@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="nav-brand-logo">
         <img src="~/Redoka-Logo.png" class="img-fluid" />
     </div>
 
-    <a class="navbar-brand" asp-action="Index" asp-controller="Home">紅橡國際農產-管理系統</a>
+    <a class="navbar-brand" asp-action="Index" asp-controller="Home">@R["SystemTitle"]</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,14 +28,16 @@
                    role="button" data-toggle="dropdown"
                    aria-expanded="false"
                    aria-haspopup="true">
-                    訂單模組
+                    @R["OrderModule"]
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navOrderModule">
                     <a asp-area="System"
                        asp-controller="PersonalProfile"
                        asp-action="Index"
-                       class="dropdown-item">訂單管理</a>
-                    <a asp-area="" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">訂單查詢</a>
+                       class="dropdown-item">
+                        @R["OrderModule-OrderManage"]
+                    </a>
+                    <a asp-area="" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">@R["OrderModule-OrderQuery"]</a>
                 </div>
             </li>
             @* 進銷模組 *@
@@ -39,16 +46,18 @@
                    role="button" data-toggle="dropdown"
                    aria-expanded="false"
                    aria-haspopup="true">
-                    進銷模組
+                    @R["StockModule"]
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navSystemModule">
                     <a asp-area="Stock"
                        asp-controller="PersonalProfile"
                        asp-action="Index"
-                       class="dropdown-item">進貨管理</a>
-                    <a asp-area="Stock" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">銷貨管理</a>
-                    <a asp-area="Stock" asp-controller="QuotationManage" asp-action="Regist" class="dropdown-item">報價管理</a>
-                    <a asp-area="Stock" asp-controller="StockManage" asp-action="Index" class="dropdown-item">商品管理</a>
+                       class="dropdown-item">
+                        @R["StockModule-進貨管理"]
+                    </a>
+                    <a asp-area="Stock" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">@R["StockModule-銷貨管理"]</a>
+                    <a asp-area="Stock" asp-controller="QuotationManage" asp-action="Regist" class="dropdown-item">@R["StockModule-報價管理"]</a>
+                    <a asp-area="Stock" asp-controller="StockManage" asp-action="Index" class="dropdown-item">@R["StockModule-商品管理"]</a>
                 </div>
             </li>
             @* 報表模組 *@
@@ -57,15 +66,11 @@
                    role="button" data-toggle="dropdown"
                    aria-expanded="false"
                    aria-haspopup="true">
-                    報表模組
+                    @R["ReportModule"]
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navSystemModule">
-                    <a asp-area="System"
-                       asp-controller="PersonalProfile"
-                       asp-action="Index"
-                       class="dropdown-item">個人資料管理</a>
-                    <a asp-area="" asp-controller="UserManage" asp-action="UserRole" class="dropdown-item">訂單報表查詢</a>
-                    <a asp-area="" asp-controller="Account" asp-action="Regist" class="dropdown-item">進銷報表查詢</a>
+                    <a asp-area="" asp-controller="OrderReportSearch" asp-action="UserRole" class="dropdown-item"> @R["ReportModule-訂單報表查詢"]</a>
+                    <a asp-area="" asp-controller="StockReportSearch" asp-action="Regist" class="dropdown-item">@R["ReportModule-進銷報表查詢"]</a>
                 </div>
             </li>
             @* 系統模組 *@
@@ -74,22 +79,28 @@
                    role="button" data-toggle="dropdown"
                    aria-expanded="false"
                    aria-haspopup="true">
-                    系統模組
+                    @R["SystemModule"]
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navSystemModule">
                     <a asp-area="System"
                        asp-controller="PersonalProfile"
                        asp-action="Index"
-                       class="dropdown-item">個人資料管理</a>
+                       class="dropdown-item">
+                        @R["SystemModule-個人資料管理"]
+                    </a>
 
                     <a asp-area="System"
                        asp-controller="UserRole"
-                       asp-action="Index" class="dropdown-item">人員權限管理</a>
+                       asp-action="Index" class="dropdown-item">
+                        @R["SystemModule-人員權限管理"]
+                    </a>
 
                     <a asp-area="System"
                        asp-controller="Account"
                        asp-action="Index"
-                       class="dropdown-item">帳號註冊</a>
+                       class="dropdown-item">
+                        @R["SystemModule-帳號註冊"]
+                    </a>
                 </div>
             </li>
         </ul>

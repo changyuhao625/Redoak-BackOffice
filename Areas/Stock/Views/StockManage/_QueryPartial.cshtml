@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#jqGrid").jqGrid({
+            url: '@Url.Action("QueryData")',
+            datatype: "json",
+            colModel: [
+                { label: '商品編號', name: 'Id',  editable: false },
+                { label: '商品名稱', name: 'Name',  editable: false },
+                { label: '創建日期', name: 'CreateDate',  editable: false }
+            ],
+            viewrecords: true,
+            caption: '查詢結果',
+            sortable: true,
+            shrinkToFit: true,
+            autowidth: true,
+            emptyrecords: "查無資料!",
+            pager: "#jqGridPager"
+        });
+
+    });
+
+</script>

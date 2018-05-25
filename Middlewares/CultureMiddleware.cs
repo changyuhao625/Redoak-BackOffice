@@ -12,8 +12,8 @@ namespace Redoak.Backoffice.Middlewares
     {
         private static readonly List<CultureInfo> _supportedCultures = new List<CultureInfo>()
         {
-            new CultureInfo("en-US"),
-            new CultureInfo("zh-TW")
+            new CultureInfo("zh-TW"),
+            new CultureInfo("en-US")
         };
 
         private static readonly RequestLocalizationOptions _localizationOptions = new RequestLocalizationOptions()
