@@ -1,0 +1,65 @@
+﻿@model Redoak.Backoffice.Areas.Stock.Models.StockManage.CreateModel
+
+<form asp-controller="StockManage"
+      asp-action="Create"
+      asp-area="Stock"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-success="CreateCallBack"
+      data-ajax-failure="CreateBackError">
+
+    @* 商品類別 *@
+    <div class="form-row ">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="CategoryId"></label>
+        </div>
+        <div class="form-group col-md-10 input-group">
+            @Html.DropDownListFor(x => x.CategoryId, Model.CategoryList)
+        </div>
+    </div>
+    @* 商品名稱 *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="Name"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="Name" class="form-control" />
+        </div>
+    </div>
+    @* 商品規格 *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label">商品規格</label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input class="form-control" />
+            <button type="button" class="btn btn-info fas fa-plus" id="GoodsSpecInsert"></button>
+        </div>
+    </div>
+    @* ---商品規格Result--- *@
+    <div class="form-row">
+        <table id="SpectGrid"></table>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="存檔" class="btn btn-dark" />
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        //$('#SpectGrid').jqGrid({});
+
+
+        //$('#GoodsSpecInsert').click(function () {
+
+        //});
+    });
+    CreateCallBack = function () {
+        $('#Query').click();
+    }
+
+    CreateBackError = function () {
+        Base.Error();
+    }
+
+</script>

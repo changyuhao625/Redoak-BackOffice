@@ -1,0 +1,76 @@
+﻿@model Redoak.Backoffice.Areas.Customer.Models.CustomerManage.CreateModel
+
+<form asp-controller="CustomerManage"
+      asp-action="Create"
+      asp-area="Customer"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-success="CreateCallBack"
+      data-ajax-failure="CreateBackError">
+
+    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+
+    @* 客戶名稱 *@
+    <div class="form-row ">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="Name"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="Name" class="form-control"/>
+        </div>
+    </div>
+    @* 聯繫人員 *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="ContactPerson"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="ContactPerson" class="form-control"/>
+        </div>
+    </div>
+    @* 地址 *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="Address"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="Address" class="form-control"/>
+        </div>
+    </div>
+    @* Email *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="ContactEmail"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="ContactEmail" class="form-control"/>
+        </div>
+    </div>
+    @* 聯繫電話 *@
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="col-form-label" asp-for="ContactPhone"></label>
+        </div>
+        <div class="form-group col-md-4 input-group">
+            <input asp-for="ContactPhone" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="存檔" class="btn btn-dark"/>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+    });
+
+    CreateCallBack = function (result) {
+        //$('#Edit').html(html);
+    }
+
+    CreateBackError = function () {
+        Base.Error();
+    }
+
+</script>

@@ -1,0 +1,118 @@
+﻿@model Redoak.Backoffice.Areas.Customer.Models.CustomerManage.QueryModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Module"] = "客戶模組";
+    ViewData["Title"] = "客戶管理";
+}
+
+
+<div class="redoak-form-container">
+    <div class="form-row redoak-form-collapse">
+        <button type="button" class="btn btn-dark" id="Query">查詢</button>
+        <button type="button" class="btn btn-dark" id="Create">新增</button>
+        <i class="fas fa-angle-double-down" data-toggle="collapse" href="#SearchForm" aria-expanded="false" aria-controls="SearchForm"></i>
+    </div>
+    <div class="collapse show col-md-12" id="SearchForm">
+        <form asp-controller="CustomerManage"
+              asp-action="Query"
+              asp-area="Customer"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-success="QueryCallBack"
+              data-ajax-failure="QueryBackError">
+
+            @* 客戶名稱 *@
+            <div class="form-row ">
+                <div class="form-group col-md-2">
+                    <label asp-for="Name" class="col-form-label"></label>
+                </div>
+                <div class="form-group col-md-4 input-group">
+                    <input class="form-control" asp-for="Name" />
+                </div>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-12 ">
+                    <button type="submit" style="display: none" id="Submit">查詢</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="redoak-result-container hidden" id="Result">
+</div>
+
+<div class="redoak-result-container hidden" id="Edit">
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        var Index = {
+            Create: $('#Create'),
+            Result: $('#Result'),
+            Query: $('#Query'),
+            Submit: $('#Submit'),
+            Edit: $('#Edit'),
+            SearchForm: $('#SearchForm'),
+            Instance: function() {
+                var instance = {}, that = this;
+
+                instance.InitElement = function() {
+                    that.Create = $('#Create');
+                    that.Result = $('#Result');
+                    that.Query = $('#Query');
+                    that.Submit = $('#Submit');
+                    that.Edit = $('#Edit');
+                    that.SearchForm = $('#SearchForm');
+                };
+
+                instance.Init = function() {
+                    that.Instance().InitElement();
+                    that.Create.click(function() {
+                        that.Result.addClass('hidden');
+                        Base.Get({
+                            url: "@Url.Action("Create")",
+                            callback: function(html) {
+                                Index.Edit.html(html);
+                                Index.Edit.removeClass('hidden');
+                                Index.SearchForm.collapse('hide');
+                            }
+                        });
+                    });
+
+                    that.Query.click(function () {
+                        that.Submit.click();
+                    });
+                };
+
+                instance.QueryCallBack = function (result) {
+                    Index.Result.removeClass('hidden');
+                    Index.Edit.addClass('hidden');
+                    Index.Result.html(result);
+                };
+
+                instance.QueryBackError = function(event, jqxhr, settings, thrownError) {
+                };
+
+                return instance;
+            }
+        }
+
+        function QueryCallBack (result) {
+            Index.Instance().QueryCallBack(result);
+        };
+
+        function QueryBackError (event, jqxhr, settings, thrownError) {
+            Index.Instance().QueryBackError(event, jqxhr, settings, thrownError);
+        };
+
+        $(function() {
+            Index.Instance().Init();
+        });
+
+
+    </script>
+}

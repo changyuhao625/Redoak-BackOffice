@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#jqGrid").jqGrid({
+            url: '@Url.Action("QueryData")',
+            datatype: "json",
+            colModel: [
+                { label: '商品類別', name: 'category.name', editable: false, classes: "jqGrid-col" },
+                { label: '商品編號', name: 'id', editable: false, classes: "jqGrid-col" },
+                { label: '商品名稱', name: 'name', editable: false, classes: "jqGrid-col"},
+                {
+                    label: '創建日期', name: 'createDate',
+                    editable: false,
+                    formatter:'date',
+                    formatoptions: { srcformat: "ISO8601Long", newformat: "Y-m-d H:i:s" },
+                    classes: "jqGrid-col"
+                }
+            ],
+            viewrecords: true,
+            caption: '查詢結果',
+            sortable: true,
+            shrinkToFit: true,
+            autowidth: true,
+            emptyrecords: "查無資料!",
+            pager: "#jqGridPager",
+            gridComplete: function() {
+                $(this).setGridWidth($('#result').width());
+            }
+        });
+
+    });
+
+</script>
