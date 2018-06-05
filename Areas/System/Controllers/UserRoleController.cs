@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Redoak.Backoffice.Areas.System.Models.UserRole;
 using Redoak.Domain.Cache;
 using Redoak.Domain.Interface;
 using Redoak.Domain.Model.Enum;
+using Redoak.Domain.Model.ViewModel;
 
 namespace Redoak.Backoffice.Areas.System.Controllers
 {
@@ -19,7 +21,7 @@ namespace Redoak.Backoffice.Areas.System.Controllers
 
         public UserRoleController(ICacheService cache,
             IUserRoleService userRoleService,
-            IUserService userService) : base(cache)
+            IUserService userService, UserManager<ApplicationUser> userManager) : base(cache,userManager)
         {
             _userRoleService = userRoleService;
             _userService = userService;

@@ -147,3 +147,23 @@ background: aqua
         padding: 5px;
         cursor: pointer;
     }
+
+.hidden {
+    display: none
+}
+
+.jqGrid-col {
+    padding: 0.5em
+}
+
+    .jqGrid-col left {
+        text-align: left;
+    }
+
+    .jqGrid-col right {
+        text-align: right;
+    }
+
+    .jqGrid-col center {
+        text-align: center;
+    }

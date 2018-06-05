@@ -17,7 +17,7 @@ namespace Redoak.Backoffice.Areas.System.Controllers
 
         public UserManageController(ICacheService cache,
             UserManager<ApplicationUser> userManager,
-            ILogger<UserManageController> logger) : base(cache)
+            ILogger<UserManageController> logger) : base(cache,userManager)
         {
             _userManager = userManager;
             _logger = logger;

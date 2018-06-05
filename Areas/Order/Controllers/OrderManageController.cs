@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Redoak.Domain.Cache;
+using Redoak.Domain.Model.ViewModel;
 
 namespace Redoak.Backoffice.Areas.Order.Controllers
 {
@@ -9,7 +11,7 @@ namespace Redoak.Backoffice.Areas.Order.Controllers
     [Route("[controller]/[action]")]
     public class OrderManageController : BaseOrderController
     {
-        public OrderManageController(ICacheService cache) : base(cache)
+        public OrderManageController(ICacheService cache, UserManager<ApplicationUser> userManager) : base(cache,userManager)
         {
         }
 

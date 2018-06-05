@@ -60,6 +60,25 @@
                     <a asp-area="Stock" asp-controller="StockManage" asp-action="Index" class="dropdown-item">@R["StockModule-商品管理"]</a>
                 </div>
             </li>
+            
+            @* 客戶模組 *@
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navCustomerModule"
+                   role="button" data-toggle="dropdown"
+                   aria-expanded="false"
+                   aria-haspopup="true">
+                    @R["CustomerModule"]
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navCustomerModule">
+                    <a asp-area="Customer"
+                       asp-controller="CustomerManage"
+                       asp-action="Index"
+                       class="dropdown-item">
+                        @R["CustomerModule-客戶管理"]
+                    </a>
+                </div>
+            </li>
+
             @* 報表模組 *@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navReportModule"

@@ -14,6 +14,8 @@ using Redoak.Domain.Model.ViewModel;
 using Redoak.Domain.Service;
 using System;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Redoak.Backoffice
 {
@@ -83,6 +85,11 @@ namespace Redoak.Backoffice
             // 主要的多國語言服務，ResourcesPath 是指定資源檔的目錄位置。
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddMvc()
+                .AddJsonOptions(option =>
+                {
+                    option.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                })
                     .AddViewLocalization()              // 在 cshtml 中使用多國語言
                     .AddDataAnnotationsLocalization();  // 在 Model 中使用多國語言
 

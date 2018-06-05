@@ -45,6 +45,7 @@
     <ProjectReference Include="..\Redoak.Domain\Redoak.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Order\Data\" />
     <Folder Include="Areas\Order\Models\" />
     <Folder Include="Areas\Report\Data\" />

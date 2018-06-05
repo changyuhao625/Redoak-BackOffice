@@ -23,7 +23,7 @@ namespace Redoak.Backoffice.Areas.System.Controllers
 
         public PersonalProfileController(ICacheService cache,
             UserManager<ApplicationUser> userManager,
-            ILogger<PersonalProfileController> logger) : base(cache)
+            ILogger<PersonalProfileController> logger) : base(cache,userManager)
         {
             _userManager = userManager;
             _logger = logger;

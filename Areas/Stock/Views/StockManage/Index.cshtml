@@ -9,7 +9,7 @@
 <div class="redoak-form-container">
     <div class="form-row redoak-form-collapse">
         <button type="button" class="btn btn-dark" id="Query">查詢</button>
-
+        <button type="button" class="btn btn-dark" id="Create">新增</button>
         <i class="fas fa-angle-double-down" data-toggle="collapse" href="#SearchForm" aria-expanded="false" aria-controls="SearchForm"></i>
     </div>
     <div class="collapse show col-md-12" id="SearchForm">
@@ -60,37 +60,78 @@
 
 </div>
 
-<div class="redoak-result-container" id="result">
+<div class="redoak-result-container hidden" id="Result">
+</div>
+
+<div class="redoak-result-container hidden" id="Edit">
 </div>
 
 @section Scripts
     {
     <script type="text/javascript">
-        $(function () {
-            //$('input[name="datepciker"]').datepicker({
-            //    //startDate: new Date(),
-            //    format: 'yyyy-mm-dd',
-            //    autoclose: true,
-            //    todayBtn: true,
-            //    todayHighlight: true
-            //});
+        var Index = {
+            Create: $('#Create'),
+            Result: $('#Result'),
+            Query: $('#Query'),
+            Submit: $('#Submit'),
+            Edit: $('#Edit'),
+            SearchForm: $('#SearchForm'),
+            Instance: function() {
+                var instance = {}, that = this;
 
-            //$('input[name="datepciker"]').datepicker('setDate', new Date());
+                instance.InitElement = function() {
+                    that.Create = $('#Create');
+                    that.Result = $('#Result');
+                    that.Query = $('#Query');
+                    that.Submit = $('#Submit');
+                    that.Edit = $('#Edit');
+                    that.SearchForm = $('#SearchForm');
+                };
 
-            $('#Query').click(function () {
-                $('#Submit').click();
-            });
+                instance.Init = function() {
+                    that.Instance().InitElement();
+                    that.Create.click(function() {
+                        that.Result.addClass('hidden');
+                        Base.Get({
+                            url: "@Url.Action("Create")",
+                            callback: function(html) {
+                                Index.Edit.html(html);
+                                Index.Edit.removeClass('hidden');
+                                Index.SearchForm.collapse('hide');
+                            }
+                        });
+                    });
 
+                    that.Query.click(function () {
+                        that.Submit.click();
+                    });
+                };
+
+                instance.QueryCallBack = function (result) {
+                    Index.Result.removeClass('hidden');
+                    Index.Edit.addClass('hidden');
+                    Index.Result.html(result);
+                };
+
+                instance.QueryBackError = function(event, jqxhr, settings, thrownError) {
+                };
+
+                return instance;
+            }
+        }
+
+        function QueryCallBack (result) {
+            Index.Instance().QueryCallBack(result);
+        };
+
+        function QueryBackError (event, jqxhr, settings, thrownError) {
+            Index.Instance().QueryBackError(event, jqxhr, settings, thrownError);
+        };
+
+        $(function() {
+            Index.Instance().Init();
         });
 
-        QueryCallBack = function (result) {
-            $('#result').html(result);
 
-
-            //Base.Success(null, result, true);
-        };
-
-        QueryBackError = function (event, jqxhr, settings, thrownError) {
-        };
     </script>
 }
