@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="ResultGrid"></div>
+<script type="text/javascript">
+    var Result = {
+        ResultGrid: $('#ResultGrid'),
+        ResultKendoGrid: {},
+        DataSrc: {},
+        Instance: function() {
+            var instance = {}, that = this;
+            instance.InitElement = function() {
+                that.ResultGrid = $('#ResultGrid');
+                that.DataSrc = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            //以下其實就是$.ajax的參數
+                            type: "POST",
+                            url: "@Url.Action("QueryData")",
+                            dataType: "json",
+                            data: Index.Instance().GetQueryData
+                        }
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverSorting: true
+                });
+            };
+
+            instance.Init = function() {
+                that.Instance().InitElement();
+                that.ResultGrid.kendoRedoakGrid({
+                    dataSource: that.DataSrc,
+                    columns: [
+                        { hidden: true, field: 'id' },
+                        { title: '商品類別', field: 'category.name' },
+                        { title: '商品編號', field: 'id' },
+                        { title: '商品名稱', field: 'name' },
+                        {
+                            title: '創建日期',
+                            field: 'createDate',
+                            template: "#: kendo.toString(kendo.parseDate(data.createDate),'yyyy-MM-dd HH:mm:ss') #"
+                        }
+                    ],
+                    dbClickCallBack: function (e) {
+                        var id = $($(this).find('td').get(0)).text();
+                        Edit.Instance().BindDataById(id);
+                    }
+                });
+                that.ResultKendoGrid = that.ResultGrid.data('kendoRedoakGrid');
+            };
+
+            return instance;
+        }
+    };
+
+
+    $(function() {
+        Result.Instance().Init();
+    });
+
+</script>

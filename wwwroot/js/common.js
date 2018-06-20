@@ -1,5 +1,6 @@
 ﻿
 var Base = {
+    _GridSelRows: [],
     SendAjax: function (para) {
         var data = {};
 
@@ -62,7 +63,7 @@ var Base = {
             type: "green",
             typeAnimated: true,
             buttons: {
-                OK: function() {
+                OK: function () {
                     if (typeof callback === "function") {
                         callback();
                     }

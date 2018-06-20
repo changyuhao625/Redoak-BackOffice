@@ -13,25 +13,8 @@
         <i class="fas fa-angle-double-down" data-toggle="collapse" href="#SearchForm" aria-expanded="false" aria-controls="SearchForm"></i>
     </div>
     <div class="collapse show col-md-12" id="SearchForm">
-        <form asp-controller="StockManage"
-              asp-action="Query"
-              asp-area="Stock"
-              data-ajax="true"
-              data-ajax-method="POST"
-              data-ajax-success="QueryCallBack"
-              data-ajax-failure="QueryBackError">
+        <form id="StockQueryForm" asp-controller="StockManage">
 
-            @* 時間起迄 *@
-            @*<div class="form-row ">
-                    <div class="form-group col-md-2">
-                        <label class="col-form-label">時間起迄:</label>
-                    </div>
-                    <div class="form-group col-md-10 input-group">
-                        <input type="text" class="form-control" name="datepciker" id="DateFrom" />
-                        <i class="fas fa-angle-right"></i>
-                        <input type="text" class="form-control" name="datepciker" id="DateTo">
-                    </div>
-                </div>*@
             @* 商品類別 *@
             <div class="form-row ">
                 <div class="form-group col-md-2">
@@ -48,11 +31,6 @@
                 </div>
                 <div class="form-group col-md-4 input-group">
                     <input class="form-control" asp-for="Name" />
-                </div>
-            </div>
-            <div class="form-row ">
-                <div class="form-group col-md-12 ">
-                    <button type="submit" style="display: none" id="Submit">查詢</button>
                 </div>
             </div>
         </form>
@@ -73,9 +51,9 @@
             Create: $('#Create'),
             Result: $('#Result'),
             Query: $('#Query'),
-            Submit: $('#Submit'),
             Edit: $('#Edit'),
             SearchForm: $('#SearchForm'),
+            StockQueryForm: $('#StockQueryForm'),
             Instance: function() {
                 var instance = {}, that = this;
 
@@ -83,14 +61,34 @@
                     that.Create = $('#Create');
                     that.Result = $('#Result');
                     that.Query = $('#Query');
-                    that.Submit = $('#Submit');
                     that.Edit = $('#Edit');
                     that.SearchForm = $('#SearchForm');
+                    that.StockQueryForm = $('#StockQueryForm');
                 };
 
                 instance.Init = function() {
                     that.Instance().InitElement();
+                    //1. Render result partial view
+                    Base.Get({
+                        url: "@Url.Action("ResultPartial")",
+                        callback: function(html) {
+                            Index.Result.html(html);
+                            Index.Result.removeClass('hidden');
+                        }
+                    });
+
+                    //2. Render Edit partial view
+                    Base.Get({
+                        url: "@Url.Action("Create")",
+                        callback: function(html) {
+                            Index.Edit.html(html);
+                            Index.Edit.addClass('hidden');
+                        }
+                    });
+
+                    //3. Initial Create Click Event
                     that.Create.click(function() {
+
                         that.Result.addClass('hidden');
                         Base.Get({
                             url: "@Url.Action("Create")",
@@ -101,37 +99,24 @@
                             }
                         });
                     });
-
-                    that.Query.click(function () {
-                        that.Submit.click();
+                    //4. Initial Query Click Event
+                    that.Query.click(function() {
+                        that.Result.removeClass('hidden');
+                        Index.Edit.addClass('hidden');
+                        Result.ResultKendoGrid.Refresh();
                     });
                 };
 
-                instance.QueryCallBack = function (result) {
-                    Index.Result.removeClass('hidden');
-                    Index.Edit.addClass('hidden');
-                    Index.Result.html(result);
-                };
-
-                instance.QueryBackError = function(event, jqxhr, settings, thrownError) {
+                instance.GetQueryData = function() {
+                    return that.StockQueryForm.serilizeFromJSON();
                 };
 
                 return instance;
             }
-        }
-
-        function QueryCallBack (result) {
-            Index.Instance().QueryCallBack(result);
-        };
-
-        function QueryBackError (event, jqxhr, settings, thrownError) {
-            Index.Instance().QueryBackError(event, jqxhr, settings, thrownError);
         };
 
         $(function() {
             Index.Instance().Init();
         });
-
-
     </script>
 }

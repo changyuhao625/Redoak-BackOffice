@@ -13,6 +13,7 @@ using Redoak.Domain.Model.Models;
 using Redoak.Domain.Model.ViewModel;
 using Redoak.Domain.Service;
 using System;
+using KendoGridBinder.ModelBinder.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -84,7 +85,8 @@ namespace Redoak.Backoffice
             // Multi-Language
             // 主要的多國語言服務，ResourcesPath 是指定資源檔的目錄位置。
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-            services.AddMvc()
+            services.AddMvc(options =>
+                    options.ModelBinderProviders.Insert(0, new KendoGridMvcModelBinderProvider()))
                 .AddJsonOptions(option =>
                 {
                     option.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

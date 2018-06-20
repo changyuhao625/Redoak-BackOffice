@@ -24,6 +24,9 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">*@
         <link rel="stylesheet" href="~/lib/Guriddo_jqGrid_JS_5.3.1/css/ui.jqgrid-bootstrap4.css" />
+        <link rel="stylesheet" href="~/lib/kendoui.for.jquery/styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="~/lib/kendoui.for.jquery/styles/kendo.default.min.css" />
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -39,6 +42,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
         @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css">*@
         <link rel="stylesheet" href="~/lib/Guriddo_jqGrid_JS_5.3.1/css/ui.jqgrid-bootstrap4.css" />
+        <link rel="stylesheet" href="~/lib/kendoui.for.jquery/styles/kendo.black.min.css" />
     </environment>
 </head>
 <body>
@@ -55,9 +59,6 @@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/i18n/grid.locale-en.js" s></script>
-        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/jquery.jqGrid.min.js"></script>
-
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/lib/Microsoft.jQuery.Unobtrusive.Ajax-master/jquery.unobtrusive-ajax.js"></script>
@@ -65,8 +66,9 @@
         <script src="~/lib/jquery-blockUI/jquery.blockUI.js"></script>
         <script src="~/js/common.js" asp-append-version="true"></script>
         <script src="~/js/jquery-extension.js" asp-append-version="true"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"
-                crossorigin="anonymous"></script>
+        <script src="~/lib/kendoui.for.jquery/js/kendo.all.min.js"></script>
+        <script src="~/lib/kendoui.for.jquery/js/cultures/kendo.culture.zh-TW.min.js"></script>
+        <script src="~/js/redoak.kendo.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -75,9 +77,6 @@
                 crossorigin="anonymous"
                 integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
         </script>
-        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/i18n/grid.locale-en.js" s></script>
-        <script type="text/ecmascript" src="~/lib/Guriddo_jqGrid_JS_5.3.1/js/jquery.jqGrid.min.js"></script>
-
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery"
@@ -88,8 +87,9 @@
         <script src="~/lib/jquery-comfirm/dist/jquery-confirm.min.js"></script>
         <script src="~/lib/jquery-blockUI/jquery.blockUI.js"></script>
         <script src="~/js/redoak.min.js" asp-append-version="true"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"
-                crossorigin="anonymous"></script>
+        <script src="~/lib/kendoui.for.jquery/js/kendo.all.min.js"></script>
+        <script src="~/lib/kendoui.for.jquery/js/cultures/kendo.culture.zh-TW.min.js"></script>
+        <script src="~/js/redoak.kendo.js"></script>
     </environment>
     @RenderSection("Scripts", false)
 

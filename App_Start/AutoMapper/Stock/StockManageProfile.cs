@@ -1,7 +1,9 @@
 ﻿using System;
 using AutoMapper;
+using KendoGridBinder.ModelBinder.Mvc;
 using Redoak.Backoffice.Areas.Stock.Models.StockManage;
 using Redoak.Backoffice.Areas.System.Models.PersonalProfile;
+using Redoak.Domain.Model.Dto;
 using Redoak.Domain.Model.Models;
 using Redoak.Domain.Model.ViewModel;
 
@@ -11,12 +13,16 @@ namespace Redoak.Backoffice.AutoMapper.System
     {
         public StockManageProfile()
         {
-            CreateMap<CreateModel, Goods>()
+            CreateMap<EditModel, Goods>()
                 .ForMember(d => d.GoodsCategoryId, s => s.MapFrom(src => src.CategoryId))
                 .ForMember(d => d.Name, s => s.MapFrom(src => src.Name))
-                .ForMember(d => d.CreateDate, s => s.MapFrom(src => DateTime.Now))
-                //.ForMember(d => d.UpdateDate, s => s.MapFrom(src => src.Email))
-                /*.ForMember(d => d.UpdateUser, s => s.MapFrom(src => src.PhoneNumber))*/;
+                .ForMember(d => d.CreateDate, s => s.MapFrom(src => DateTime.Now));
+            CreateMap<Goods, EditModel>()
+                .ForMember(d => d.CategoryId, s => s.MapFrom(src => src.GoodsCategoryId));
+
+            CreateMap<QueryModel, StockQueryDto>();
+            CreateMap<KendoGridMvcRequest, StockQueryDto>();
+
         }
     }
 }

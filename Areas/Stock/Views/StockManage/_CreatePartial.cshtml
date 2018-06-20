@@ -1,12 +1,14 @@
-﻿@model Redoak.Backoffice.Areas.Stock.Models.StockManage.CreateModel
+﻿@model Redoak.Backoffice.Areas.Stock.Models.StockManage.EditModel
 
 <form asp-controller="StockManage"
       asp-action="Create"
       asp-area="Stock"
       data-ajax="true"
       data-ajax-method="POST"
-      data-ajax-success="CreateCallBack"
-      data-ajax-failure="CreateBackError">
+      data-ajax-success="Edit.CreateCallBack"
+      data-ajax-failure="Edit.CreateBackError">
+    @* Id *@
+    @Html.HiddenFor(x=>x.Id)
 
     @* 商品類別 *@
     <div class="form-row ">
@@ -23,7 +25,7 @@
             <label class="col-form-label" asp-for="Name"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form-control"/>
         </div>
     </div>
     @* 商品規格 *@
@@ -32,7 +34,7 @@
             <label class="col-form-label">商品規格</label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input class="form-control" />
+            <input class="form-control"/>
             <button type="button" class="btn btn-info fas fa-plus" id="GoodsSpecInsert"></button>
         </div>
     </div>
@@ -41,25 +43,46 @@
         <table id="SpectGrid"></table>
     </div>
     <div class="form-group">
-        <input type="submit" value="存檔" class="btn btn-dark" />
+        <input type="submit" value="存檔" class="btn btn-dark"/>
     </div>
 </form>
 
 <script type="text/javascript">
+    var Edit = {
+
+        Instance: function () {
+            var instance = {}, that = this;
+
+            instance.InitElement = function () {
+
+            };
+
+            instance.Init = function () {
+                instance.InitElement();
+            };
+
+            instance.BindDataById = function (id) {
+                Base.Get({
+                    data: { id: id },
+                    url: "@(Url.Action("Edit"))",
+                    callback: function(html) {
+                        Index.Edit.html(html);
+                        Index.Edit.removeClass('hidden');
+                    }
+                });
+            }
+            return instance;
+        },
+        CreateCallBack: function () {
+            Index.Result.removeClass('hidden');
+            Result.ResultKendoGrid.Refresh();
+        },
+        CreateBackError: function (e) {
+            //Base.Error(e);
+        }
+    };
+
     $(function () {
-        //$('#SpectGrid').jqGrid({});
-
-
-        //$('#GoodsSpecInsert').click(function () {
-
-        //});
+        Edit.Instance().Init();
     });
-    CreateCallBack = function () {
-        $('#Query').click();
-    }
-
-    CreateBackError = function () {
-        Base.Error();
-    }
-
 </script>
