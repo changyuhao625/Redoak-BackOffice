@@ -5,18 +5,22 @@
       asp-area="Customer"
       data-ajax="true"
       data-ajax-method="POST"
-      data-ajax-success="CreateCallBack"
-      data-ajax-failure="CreateBackError">
+      data-ajax-success="Edit.CreateCallBack"
+      data-ajax-failure="Edit.CreateBackError">
 
-    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @*@Html.TextBoxFor(x => x.Id)
+        @Html.TextBoxFor(x => x.RegionId)*@
 
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.RegionId)
     @* 客戶名稱 *@
     <div class="form-row ">
         <div class="form-group col-md-2">
             <label class="col-form-label" asp-for="Name"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="Name" class="form-control"/>
+            <input asp-for="Name" class="form-control" />
         </div>
     </div>
     @* 聯繫人員 *@
@@ -25,7 +29,7 @@
             <label class="col-form-label" asp-for="ContactPerson"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="ContactPerson" class="form-control"/>
+            <input asp-for="ContactPerson" class="form-control" />
         </div>
     </div>
     @* 地址 *@
@@ -34,7 +38,7 @@
             <label class="col-form-label" asp-for="Address"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="Address" class="form-control"/>
+            <input asp-for="Address" class="form-control" />
         </div>
     </div>
     @* Email *@
@@ -43,7 +47,7 @@
             <label class="col-form-label" asp-for="ContactEmail"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="ContactEmail" class="form-control"/>
+            <input asp-for="ContactEmail" class="form-control" />
         </div>
     </div>
     @* 聯繫電話 *@
@@ -52,25 +56,52 @@
             <label class="col-form-label" asp-for="ContactPhone"></label>
         </div>
         <div class="form-group col-md-4 input-group">
-            <input asp-for="ContactPhone" class="form-control"/>
+            <input asp-for="ContactPhone" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
-        <input type="submit" value="存檔" class="btn btn-dark"/>
+        <input type="submit" value="存檔" class="btn btn-dark" />
     </div>
 </form>
 
 <script type="text/javascript">
+    var Edit = {
+
+        Instance: function () {
+            var instance = {}, that = this;
+
+            instance.InitElement = function () {
+
+            };
+
+            instance.Init = function () {
+                instance.InitElement();
+            };
+
+            instance.BindDataById = function (id) {
+                Base.Get({
+                    data: { id: id },
+                    url: "@(Url.Action("Edit"))",
+                    callback: function(html) {
+                        Index.Edit.html(html);
+                        Index.Edit.removeClass('hidden');
+                    }
+                });
+            }
+            return instance;
+        },
+        CreateCallBack: function () {
+            Index.Result.removeClass('hidden');
+            Index.Edit.addClass('hidden');
+            Result.ResultKendoGrid.Refresh();
+        },
+        CreateBackError: function (e) {
+            //Base.Error(e);
+        }
+    };
+
     $(function () {
+        Edit.Instance().Init();
     });
-
-    CreateCallBack = function (result) {
-        //$('#Edit').html(html);
-    }
-
-    CreateBackError = function () {
-        Base.Error();
-    }
-
 </script>

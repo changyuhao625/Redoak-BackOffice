@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Manage\ResetAuthenticator.cshtml" />
+    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="wwwroot\js\Common.js" />
     <Content Remove="wwwroot\js\common.js" />
   </ItemGroup>

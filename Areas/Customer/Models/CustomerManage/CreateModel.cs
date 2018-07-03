@@ -1,11 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace Redoak.Backoffice.Areas.Customer.Models.CustomerManage
 {
     public class CreateModel
     {
-        [Display(Name = "客戶名稱")] public string Name { get; set; }
+        public CreateModel()
+        {
+        }
+
+        public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "客戶名稱")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string Name { get; set; }
 
         [Display(Name = "聯繫人員")] public string ContactPerson { get; set; }
 

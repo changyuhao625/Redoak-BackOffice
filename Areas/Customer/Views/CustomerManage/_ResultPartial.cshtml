@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -34,13 +35,13 @@
                     dataSource: that.DataSrc,
                     columns: [
                         { hidden: true, field: 'id' },
-                        { title: '商品類別', field: 'category.name' },
-                        { title: '商品編號', field: 'id' },
-                        { title: '商品名稱', field: 'name' },
+                        { title: '客戶編號', field: 'id' },
+                        { title: '客戶姓名', field: 'name' },
+                        { title: '客戶盤口', field: 'region.name' },
                         {
-                            title: '更新日期',
+                            title: '盤口更新日期',
                             field: 'updateDate',
-                            template: "#: kendo.toString(kendo.parseDate(data.updateDate),'yyyy-MM-dd HH:mm:ss') #"
+                            template: "#: kendo.toString(kendo.parseDate(data.region.updateDate),'yyyy-MM-dd HH:mm:ss') #"
                         }
                     ],
                     dbClickCallBack: function (e) {

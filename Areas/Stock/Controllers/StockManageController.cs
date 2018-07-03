@@ -79,8 +79,6 @@ namespace Redoak.Backoffice.Areas.Stock.Controllers
             {
                 var entity = Mapper.Map<Goods>(model);
                 entity.UpdateUser = UserId;
-                entity.UpdateDate = DateTime.Now;
-                entity.CreateDate = DateTime.Now;
                 await _service.CreateOrEdit(entity);
             }
             catch (Exception e)

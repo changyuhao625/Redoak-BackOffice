@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,5 +24,18 @@ namespace Redoak.Backoffice.Areas
 
         public ICacheService Cache { get; set; }
 
+        public string GetModelStateMsg()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in ModelState.Values)
+            {
+                foreach (var err in item.Errors)
+                {
+                    sb.AppendLine(err.ErrorMessage);
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }
